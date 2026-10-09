@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0f1419">
+<title>Do'ppi AI — O'zbekcha sun'iy do'st</title>
+<link rel="icon" href="logo.png">
+<style>
+  :root{
+    --bg:#0f1419; --bg2:#1a1f2e; --panel:#1e2535; --accent:#0a84ff;
+    --gold:#d4a657; --teal:#3fb8af; --text:#e8eef5; --muted:#8a97a8;
+    --user:#2b5278; --bot:#262c3a; --danger:#ff5252; --ok:#4ade80;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
+  body{
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(212,166,87,.08) 0 180px, transparent 181px),
+      radial-gradient(circle at 85% 80%, rgba(63,184,175,.07) 0 200px, transparent 201px),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%23d4a657' stroke-opacity='0.06' stroke-width='1.2'><path d='M40 4c10 18 10 42 0 60M40 76C30 58 30 34 40 16M4 40c18-10 42-10 60 0M76 40C58 30 34 30 16 40'/><circle cx='40' cy='40' r='6'/><circle cx='40' cy='4' r='2' fill='%23d4a657' fill-opacity='.1'/><circle cx='76' cy='40' r='2' fill='%23d4a657' fill-opacity='.1'/><circle cx='40' cy='76' r='2' fill='%23d4a657' fill-opacity='.1'/><circle cx='4' cy='40' r='2' fill='%23d4a657' fill-opacity='.1'/></g></svg>");
+  }
+  .app{display:flex;flex-direction:column;height:100dvh;height:100vh;max-width:860px;margin:0 auto;background:rgba(15,20,25,.86);backdrop-filter:blur(14px);border-left:1px solid #1f2736;border-right:1px solid #1f2736;position:relative}
+  header{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(180deg,#141a26,#0f1419);border-bottom:1px solid #1f2736;box-shadow:0 2px 12px rgba(0,0,0,.4)}
+  .logo{width:42px;height:42px;border-radius:50%;background:conic-gradient(from 0deg,#d4a657,#3fb8af,#d4a657);padding:2px;flex-shrink:0}
+  .logo img{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#0f1419}
+  .title{flex:1;min-width:0}
+  .title h1{font-size:17px;font-weight:600;display:flex;align-items:center;gap:6px}
+  .title h1::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 6px var(--ok)}
+  .title p{font-size:12px;color:var(--muted);margin-top:2px}
+  .icon-btn{width:40px;height:40px;border-radius:50%;background:transparent;border:none;color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:.2s}
+  .icon-btn:active{background:rgba(255,255,255,.08);transform:scale(.92)}
+
+  .messages{flex:1;overflow-y:auto;padding:14px 12px 8px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+  .messages::-webkit-scrollbar{width:6px}
+  .messages::-webkit-scrollbar-thumb{background:#2a3244;border-radius:3px}
+  .msg{max-width:78%;padding:9px 12px;border-radius:16px;font-size:15px;line-height:1.45;word-wrap:break-word;white-space:pre-wrap;animation:pop .25s ease-out;position:relative}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .msg.bot{background:var(--bot);border-bottom-left-radius:4px;align-self:flex-start;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+  .msg.user{background:linear-gradient(135deg,#2b5278,#1e3a5f);border-bottom-right-radius:4px;align-self:flex-end}
+  .msg.system{background:rgba(212,166,87,.12);border:1px solid rgba(212,166,87,.25);color:#e8c987;align-self:center;text-align:center;font-size:13px;padding:6px 14px;border-radius:14px}
+  .msg img{max-width:100%;border-radius:10px;margin-top:4px;display:block}
+  .msg audio{display:block;margin-top:6px;width:100%}
+  .msg .time{display:block;font-size:10px;color:rgba(255,255,255,.5);margin-top:3px;text-align:right}
+  .typing{display:inline-flex;gap:3px;padding:4px 0}
+  .typing span{width:6px;height:6px;background:var(--muted);border-radius:50%;animation:bounce 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+  @keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+
+  .composer{display:flex;gap:8px;padding:10px 12px;background:#141a26;border-top:1px solid #1f2736;align-items:flex-end}
+  .plus-btn{width:40px;height:40px;border-radius:50%;background:transparent;border:1.5px solid #2a3244;color:var(--muted);cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s}
+  .plus-btn:active{background:#2a3244;color:var(--text)}
+  .input-wrap{flex:1;background:#1e2535;border-radius:20px;padding:8px 12px;display:flex;align-items:center;gap:6px;min-height:40px}
+  #input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:15px;resize:none;max-height:120px;line-height:1.35;font-family:inherit}
+  #input::placeholder{color:var(--muted)}
+  .mic-btn,.send-btn{width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:.2s;flex-shrink:0}
+  .mic-btn{background:transparent;color:var(--muted)}
+  .mic-btn:active{color:var(--accent)}
+  .mic-btn.rec{color:var(--danger);animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  .send-btn{background:var(--accent);color:#fff}
+  .send-btn:disabled{background:#3a4255;color:#6a7488}
+
+  /* Plus menu */
+  .attach-menu{position:absolute;bottom:70px;left:12px;background:#1e2535;border-radius:14px;padding:8px;box-shadow:0 8px 24px rgba(0,0,0,.5);display:none;flex-direction:column;gap:2px;min-width:200px;z-index:50;border:1px solid #2a3244}
+  .attach-menu.show{display:flex;animation:pop .2s}
+  .attach-menu button{background:transparent;border:none;color:var(--text);padding:10px 14px;text-align:left;cursor:pointer;border-radius:8px;font-size:14px;display:flex;align-items:center;gap:10px}
+  .attach-menu button:hover{background:#2a3244}
+  .attach-menu .soon{color:var(--muted);font-size:11px;margin-left:auto;background:#2a3244;padding:2px 7px;border-radius:6px}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:flex-end;justify-content:center;z-index:100;backdrop-filter:blur(4px)}
+  .modal.show{display:flex;animation:fadeIn .2s}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal-content{background:#1e2535;width:100%;max-width:500px;border-radius:20px 20px 0 0;padding:20px;max-height:85vh;overflow-y:auto;animation:slideUp .3s}
+  @keyframes slideUp{from{transform:translateY(100%)}to{transform:none}}
+  .modal h2{font-size:18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+  .modal h2 .close{background:transparent;border:none;color:var(--muted);font-size:22px;cursor:pointer}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}
+  .field input,.field textarea,.field select{width:100%;background:#141a26;border:1px solid #2a3244;color:var(--text);padding:10px 12px;border-radius:10px;font-size:14px;outline:none;font-family:inherit}
+  .field input:focus,.field textarea:focus{border-color:var(--accent)}
+  .btn-row{display:flex;gap:8px;margin-top:10px}
+  .btn{flex:1;padding:11px;border-radius:10px;border:none;cursor:pointer;font-size:14px;font-weight:500;transition:.2s}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-secondary{background:#2a3244;color:var(--text)}
+  .btn:active{transform:scale(.97)}
+
+  .switch{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #2a3244}
+  .switch:last-child{border-bottom:none}
+  .switch span{font-size:14px}
+  .toggle{width:42px;height:24px;background:#3a4255;border-radius:12px;position:relative;cursor:pointer;transition:.2s}
+  .toggle.on{background:var(--accent)}
+  .toggle::after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:.2s}
+  .toggle.on::after{left:20px}
+
+  .notif-banner{position:fixed;top:12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#d4a657,#b8893f);color:#1a1f2e;padding:10px 16px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:0 6px 20px rgba(212,166,87,.35);z-index:200;display:none;animation:slideDown .3s}
+  @keyframes slideDown{from{transform:translate(-50%,-120%)}to{transform:translate(-50%,0)}}
+
+  .welcome{text-align:center;padding:30px 20px;color:var(--muted)}
+  .welcome .big-logo{width:90px;height:90px;border-radius:50%;background:conic-gradient(from 0deg,#d4a657,#3fb8af,#d4a657);padding:3px;margin:0 auto 14px}
+  .welcome .big-logo img{width:100%;height:100%;border-radius:50%;object-fit:cover;background:var(--bg)}
+  .welcome h2{color:var(--text);font-size:22px;margin-bottom:6px}
+  .welcome p{font-size:14px;line-height:1.5;max-width:360px;margin:0 auto 18px}
+  .quick-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+  .chip{background:#1e2535;border:1px solid #2a3244;padding:8px 14px;border-radius:16px;font-size:13px;cursor:pointer;transition:.2s}
+  .chip:active{background:#2a3244;border-color:var(--accent)}
+
+  @media(min-width:600px){
+    .msg{max-width:65%}
+    .modal-content{border-radius:20px;margin-bottom:40px;max-width:460px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="logo"><img src="logo.png" alt="Do'ppi AI"></div>
+    <div class="title">
+      <h1>Do'ppi AI</h1>
+      <p id="statusText">online · o'zbek do'stingiz</p>
+    </div>
+    <button class="icon-btn" id="notifBtn" title="Bildirishnomalar">🔔</button>
+    <button class="icon-btn" id="settingsBtn" title="Sozlamalar">⚙️</button>
+  </header>
+
+  <div class="messages" id="messages"></div>
+
+  <div class="attach-menu" id="attachMenu">
+    <button data-act="photo">📷 Rasm yuborish</button>
+    <button data-act="voice">🎙️ Ovozli xabar</button>
+    <button data-act="sat">📚 SAT rejimi</button>
+    <button data-act="mkt">💼 Marketing rejimi</button>
+    <button data-act="reset">🗑️ Suhbatni tozalash</button>
+    <button data-act="soon-pdf">📄 PDF <span class="soon">tez orada</span></button>
+    <button data-act="soon-file">📎 Fayl <span class="soon">tez orada</span></button>
+    <button data-act="soon-video">🎥 Video <span class="soon">tez orada</span></button>
+  </div>
+
+  <div class="composer">
+    <button class="plus-btn" id="plusBtn">＋</button>
+    <div class="input-wrap">
+      <textarea id="input" rows="1" placeholder="Xabar yozing..."></textarea>
+      <button class="mic-btn" id="micBtn" title="Ovozli">🎤</button>
+    </div>
+    <button class="send-btn" id="sendBtn" disabled>➤</button>
+  </div>
+</div>
+
+<!-- Settings Modal -->
+<div class="modal" id="settingsModal">
+  <div class="modal-content">
+    <h2>⚙️ Sozlamalar <button class="close" data-close="settingsModal">✕</button></h2>
+    <div class="field">
+      <label>Ismingiz (bot eslab qoladi)</label>
+      <input type="text" id="setName" placeholder="Masalan: Bahodir">
+    </div>
+    <div class="field">
+      <label>Gemini API kalit (ixtiyoriy, kuchliroq)</label>
+      <input type="password" id="setGemini" placeholder="AIza...">
+    </div>
+    <div class="field">
+      <label>Groq API kalit (ixtiyoriy, juda tez)</label>
+      <input type="password" id="setGroq" placeholder="gsk_...">
+    </div>
+    <div class="switch">
+      <span>🎤 Ovozli javob (TTS)</span>
+      <div class="toggle on" id="togTTS"></div>
+    </div>
+    <div class="switch">
+      <span>💡 Kunlik motivatsiya</span>
+      <div class="toggle on" id="togDaily"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="resetMemory">Xotirani tozalash</button>
+      <button class="btn btn-primary" id="saveSettings">Saqlash</button>
+    </div>
+  </div>
+</div>
+
+<!-- Notification Modal -->
+<div class="modal" id="notifModal">
+  <div class="modal-content">
+    <h2>🔔 Bildirishnomalar <button class="close" data-close="notifModal">✕</button></h2>
+    <p style="color:var(--muted);font-size:14px;line-height:1.5;margin-bottom:14px">
+      Do'ppi AI har kuni ertalab sizga motivatsiya va maslahat yuborib turadi. Ruxsat bering.
+    </p>
+    <div class="btn-row">
+      <button class="btn btn-secondary" data-close="notifModal">Hozir emas</button>
+      <button class="btn btn-primary" id="reqNotif">Ruxsat berish</button>
+    </div>
+    <p id="notifStatus" style="color:var(--muted);font-size:12px;margin-top:12px;text-align:center"></p>
+  </div>
+</div>
+
+<div class="notif-banner" id="banner"></div>
+
+<script>
+/* ============ KONFIGURATSIYA ============ */
+const DEFAULT_AI = "pollinations"; // Pollinations har doim ishlaydi (kalitsiz)
+const SYSTEM_PROMPT = `Sen Do'ppi AI san - o'zbekcha gaplashadigan samimiy do'st va aqlli yordamchi.
+KIMLIGING: O'zbek yoshlari uchun yaratilgan sun'iy intellektli do'st. Asosching: Bahodir Jo'rayev (@Jbahodri).
+YOZISH: Markdown belgilarisiz (**, *, ###, \`\`\`). Toza matn. Tartib kerak bo'lsa raqam bilan: 1. 2. 3.
+ROL: Do'stona suhbatda - samimiy do'st. Ilm-fanda - olim. SAT/test - SAT tutor. Biznes/post - marketing mutaxassisi.
+USLUB: O'zbek tilida. 1-4 gap. Tabiiy savol ber. Hazilni tushun. "yana savol bormi" dema.
+YODDA TUT: Sen o'zbek yoshlarining haqiqiy do'sti, o'qituvchisi va maslahatchisan.`;
+
+/* ============ STATE ============ */
+const state = {
+  messages: JSON.parse(localStorage.getItem('doppi_msgs') || '[]'),
+  settings: JSON.parse(localStorage.getItem('doppi_settings') || '{}'),
+  isTyping: false,
+  isRec: false,
+  recognition: null
+};
+state.settings = {
+  name: '', geminiKey: '', groqKey: '',
+  tts: true, daily: true,
+  mode: 'chat', // chat | sat | mkt
+  ...state.settings
+};
+
+/* ============ DOM ============ */
+const $ = s => document.querySelector(s);
+const messagesEl = $('#messages');
+const inputEl = $('#input');
+const sendBtn = $('#sendBtn');
+const plusBtn = $('#plusBtn');
+const attachMenu = $('#attachMenu');
+const micBtn = $('#micBtn');
+const statusText = $('#statusText');
+
+/* ============ INIT ============ */
+function init(){
+  renderAll();
+  autoResize();
+  // Avtomatik bildirishnoma so'rash (3 sekunddan keyin)
+  setTimeout(()=>{
+    if(!state.settings.notifAsked && 'Notification' in window && Notification.permission === 'default'){
+      $('#notifModal').classList.add('show');
+    }
+  }, 3000);
+  // Kunlik motivatsiya
+  checkDailyMotivation();
+  // Kunlik soat 9:00 da tekshirish
+  setInterval(checkDailyMotivation, 60000);
+}
+
+function renderAll(){
+  messagesEl.innerHTML = '';
+  if(state.messages.length === 0){
+    messagesEl.innerHTML = `
+      <div class="welcome">
+        <div class="big-logo"><img src="logo.png"></div>
+        <h2>Xush kelibsiz${state.settings.name ? ', ' + state.settings.name : ''}! 👋</h2>
+        <p>Men Do'ppi AI — o'zbekcha gaplashadigan sun'iy do'stingiz. SAT, biznes, dars yoki shunchaki suhbat — barchasida yoningizdaman.</p>
+        <div class="quick-chips">
+          <div class="chip" data-q="Bugungi kun uchun motivatsiya ber">✨ Motivatsiya</div>
+          <div class="chip" data-q="SAT matematika bo'yicha bitta misol va yechimini ber">📚 SAT misol</div>
+          <div class="chip" data-q="O'zbek milliy taomi haqida gapirib ber">🍲 Milliy taom</div>
+          <div class="chip" data-q="Biror qiziq fakt ayt">💡 Fakt</div>
+        </div>
+      </div>`;
+    document.querySelectorAll('.chip').forEach(c=>{
+      c.onclick = ()=>{ inputEl.value = c.dataset.q; sendMessage(); };
+    });
+  } else {
+    state.messages.forEach(m => appendMessage(m, false));
+  }
+  scrollToBottom();
+}
+
+function appendMessage(m, save=true){
+  if(save) { state.messages.push(m); saveMessages(); }
+  const div = document.createElement('div');
+  div.className = 'msg ' + m.role;
+  let html = '';
+  if(m.image){ html += `<img src="${m.image}" alt="rasm">`; }
+  if(m.text) html += escapeHtml(m.text);
+  html += `<span class="time">${formatTime(m.time)}</span>`;
+  div.innerHTML = html;
+  messagesEl.appendChild(div);
+  scrollToBottom();
+  if(m.role === 'bot' && state.settings.tts && m.text) speak(m.text);
+}
+
+function showTyping(){
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  div.id = 'typingMsg';
+  div.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+  messagesEl.appendChild(div);
+  scrollToBottom();
+}
+function hideTyping(){
+  const t = document.getElementById('typingMsg');
+  if(t) t.remove();
+}
+
+/* ============ SEND MESSAGE ============ */
+async function sendMessage(){
+  const text = inputEl.value.trim();
+  if(!text) return;
+  inputEl.value = ''; autoResize();
+  appendMessage({role:'user', text, time:Date.now()});
+  await getAIResponse(text);
+}
+
+async function sendWithImage(text, imgDataUrl){
+  appendMessage({role:'user', text:text||'Rasmda nima bor?', image:imgDataUrl, time:Date.now()});
+  await getAIResponse(text||'Rasmda nima bor?', imgDataUrl);
+}
+
+async function getAIResponse(userText, image=null){
+  state.isTyping = true;
+  updateStatus();
+  showTyping();
+  try {
+    const msgs = buildPromptMessages(userText, image);
+    let reply = null;
+    // Avval foydalanuvchi kalitlari bilan, keyin default
+    if(state.settings.geminiKey) reply = await callGemini(msgs, state.settings.geminiKey, image);
+    if(!reply && state.settings.groqKey && !image) reply = await callGroq(msgs, state.settings.groqKey);
+    if(!reply) reply = await callPollinations(msgs);
+    if(!reply) reply = "Kechirasiz oshna, hozir aloqa biroz qiyin. Birozdan keyin urinib ko'ring 😅";
+    hideTyping();
+    appendMessage({role:'bot', text:reply, time:Date.now()});
+  } catch(e){
+    hideTyping();
+    appendMessage({role:'bot', text:'Xatolik yuz berdi: ' + e.message, time:Date.now()});
+  }
+  state.isTyping = false;
+  updateStatus();
+}
+
+function buildPromptMessages(userText, image){
+  const sys = SYSTEM_PROMPT + buildModeBlock() + buildUserContext();
+  const msgs = [{role:'system', content:sys}];
+  // Tarix (oxirgi 10 ta)
+  const hist = state.messages.slice(-10);
+  hist.forEach(m => {
+    if(m.role === 'user') msgs.push({role:'user', content: m.text || '[rasm]'});
+    else if(m.role === 'bot') msgs.push({role:'assistant', content: m.text});
+  });
+  if(image){
+    msgs.push({role:'user', content:[
+      {type:'text', text: userText || 'Rasmda nima bor?'},
+      {type:'image_url', image_url:{url: image}}
+    ]});
+  } else {
+    msgs.push({role:'user', content: userText});
+  }
+  return msgs;
+}
+
+function buildModeBlock(){
+  if(state.settings.mode === 'sat') return "\n\nSAT TUTOR REJIMI: misolni bosqichma-bosqich, aniq yech. Har qadamni tushuntir. Oxirida o'xshash mashq ber.";
+  if(state.settings.mode === 'mkt') return "\n\nMARKETING REJIMI: sarlavha, foyda, isbot, CTA ketma-ketligida yoz. Sotuvchi, ta'sirli, emoji va heshteg bilan.";
+  return '';
+}
+function buildUserContext(){
+  let c = '';
+  if(state.settings.name) c += `\nFoydalanuvchi ismi: ${state.settings.name}. Uni shu ism bilan chaqir.`;
+  return c;
+}
+
+/* ============ AI PROVIDERS ============ */
+async function callGemini(msgs, key, image){
+  const model = image ? 'gemini-2.0-flash' : 'gemini-2.0-flash';
+  const contents = [];
+  msgs.forEach(m => {
+    if(m.role === 'system') return; // systemInstruction sifatida
+    const parts = [];
+    if(typeof m.content === 'string'){
+      parts.push({text: m.content});
+    } else if(Array.isArray(m.content)){
+      m.content.forEach(p => {
+        if(p.type === 'text') parts.push({text: p.text});
+        else if(p.type === 'image_url'){
+          const b64 = p.image_url.url.split(',')[1];
+          const mime = p.image_url.url.split(';')[0].split(':')[1];
+          parts.push({inline_data:{mime_type:mime, data:b64}});
+        }
+      });
+    }
+    contents.push({role: m.role === 'assistant' ? 'model' : 'user', parts});
+  });
+  const sysMsg = msgs.find(m => m.role === 'system');
+  const body = {
+    systemInstruction: sysMsg ? {parts:[{text: sysMsg.content}]} : undefined,
+    contents,
+    generationConfig:{maxOutputTokens: 1500}
+  };
+  const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+    method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
+  });
+  if(!r.ok) return null;
+  const data = await r.json();
+  return data?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('').trim() || null;
+}
+
+async function callGroq(msgs, key){
+  const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method:'POST',
+    headers:{'Authorization':`Bearer ${key}`, 'Content-Type':'application/json'},
+    body: JSON.stringify({model:'llama-3.3-70b-versatile', messages:msgs, max_tokens:1500})
+  });
+  if(!r.ok) return null;
+  const data = await r.json();
+  return data?.choices?.[0]?.message?.content?.trim() || null;
+}
+
+async function callPollinations(msgs){
+  // Pollinations — kalitsiz, har doim ishlaydi
+  try{
+    const r = await fetch('https://text.pollinations.ai/openai', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({model:'openai', messages:msgs, private:true})
+    });
+    if(!r.ok) return null;
+    const data = await r.json();
+    const text = data?.choices?.[0]?.message?.content?.trim();
+    if(text && !/budget|api key|raise the key/i.test(text)) return text;
+  }catch(e){}
+  // Pollinations text-only fallback
+  try{
+    const sysMsg = msgs.find(m=>m.role==='system')?.content || '';
+    const userMsgs = msgs.filter(m=>m.role!=='system').map(m=>{
+      if(typeof m.content==='string') return (m.role==='user'?'User: ':'Bot: ') + m.content;
+      return (m.role==='user'?'User: ':'Bot: ') + '[rasm]';
+    }).join('\n');
+    const prompt = encodeURIComponent(sysMsg + '\n\n' + userMsgs);
+    const r = await fetch(`https://text.pollinations.ai/${prompt}?model=openai&private=true`);
+    if(r.ok) return (await r.text()).trim();
+  }catch(e){}
+  return null;
+}
+
+/* ============ TTS (Web Speech API) ============ */
+function speak(text){
+  if(!('speechSynthesis' in window)) return;
+  const clean = text.replace(/[🎩👋😊🇺🇿💪📚🍲💡🔥❤️👍👏😏🤫✅❌📊📜📝🕵️📺🎭🎤📢✍️⚙️📎📄🎥]/g,'').trim();
+  if(clean.length > 500) return; // juda uzunlarni o'qimaymiz
+  const u = new SpeechSynthesisUtterance(clean);
+  u.lang = 'uz-UZ';
+  u.rate = 1.0;
+  // O'zbek ovozi bo'lmasa, rus yoki ingliz ishlatamiz
+  const voices = speechSynthesis.getVoices();
+  const uz = voices.find(v => v.lang.startsWith('uz'));
+  const ru = voices.find(v => v.lang.startsWith('ru'));
+  if(uz) u.voice = uz;
+  else if(ru) u.voice = ru;
+  speechSynthesis.speak(u);
+}
+
+/* ============ SPEECH RECOGNITION ============ */
+function startRecording(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ alert("Brauzeringiz ovozni tushunmaydi. Chrome yoki Edge ishlatib ko'ring."); return; }
+  state.recognition = new SR();
+  state.recognition.lang = 'uz-UZ';
+  state.recognition.continuous = false;
+  state.recognition.interimResults = true;
+  state.recognition.onresult = e => {
+    let txt = '';
+    for(let i=e.resultIndex; i<e.results.length; i++) txt += e.results[i][0].transcript;
+    inputEl.value = txt; autoResize();
+  };
+  state.recognition.onend = ()=>{
+    state.isRec = false; micBtn.classList.remove('rec');
+  };
+  state.recognition.start();
+  state.isRec = true; micBtn.classList.add('rec');
+}
+function stopRecording(){
+  if(state.recognition) state.recognition.stop();
+}
+
+/* ============ KUNLIK MOTIVATSIYA ============ */
+async function checkDailyMotivation(){
+  if(!state.settings.daily) return;
+  const last = localStorage.getItem('doppi_daily_last');
+  const today = new Date().toDateString();
+  const hour = new Date().getHours();
+  if(last === today) return;
+  if(hour < 8 || hour > 22) return;
+  localStorage.setItem('doppi_daily_last', today);
+  // Bildirishnoma
+  if('Notification' in window && Notification.permission === 'granted'){
+    new Notification('Do\'ppi AI 🎩', {
+      body: 'Yangi kun — yangi imkoniyat! Suhbatlashaylikmi?',
+      icon: 'logo.png'
+    });
+  }
+  // Chatga motivatsiya
+  if(state.messages.length > 0){
+    state.settings.notifAsked = true;
+    const msgs = [
+      {role:'system', content:'Qisqa (2 gap), iliq, o\'zbekcha motivatsion xabar yoz. Foydalanuvchi ismi: ' + (state.settings.name||'oshna') + '.'},
+      {role:'user', content:'Yangi kun boshlandi. Motivatsiya ber.'}
+    ];
+    const reply = await callPollinations(msgs);
+    if(reply){
+      appendMessage({role:'system', text:'☀️ ' + reply, time:Date.now()});
+    }
+  }
+}
+
+/* ============ UTILS ============ */
+function saveMessages(){
+  // Faqat oxirgi 100 ta xabarni saqlaymiz
+  const toSave = state.messages.slice(-100);
+  localStorage.setItem('doppi_msgs', JSON.stringify(toSave));
+}
+function saveSettings(){
+  localStorage.setItem('doppi_settings', JSON.stringify(state.settings));
+}
+function updateStatus(){
+  statusText.textContent = state.isTyping ? 'yozmoqda...' : 'online · o\'zbek do\'stingiz';
+}
+function scrollToBottom(){
+  setTimeout(()=>{ messagesEl.scrollTop = messagesEl.scrollHeight; }, 50);
+}
+function autoResize(){
+  inputEl.style.height = 'auto';
+  inputEl.style.height = Math.min(inputEl.scrollHeight, 120) + 'px';
+  sendBtn.disabled = !inputEl.value.trim();
+}
+function escapeHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function formatTime(ts){
+  const d = new Date(ts);
+  return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+}
+function showBanner(text){
+  const b = $('#banner');
+  b.textContent = text;
+  b.style.display = 'block';
+  setTimeout(()=>{ b.style.display='none'; }, 3500);
+}
+function openModal(id){ $('#'+id).classList.add('show'); }
+function closeModal(id){ $('#'+id).classList.remove('show'); }
+
+/* ============ EVENT LISTENERS ============ */
+inputEl.addEventListener('input', autoResize);
+inputEl.addEventListener('keydown', e=>{
+  if(e.key === 'Enter' && !e.shiftKey){
+    e.preventDefault();
+    sendMessage();
+  }
+});
+sendBtn.addEventListener('click', sendMessage);
+
+plusBtn.addEventListener('click', e=>{
+  e.stopPropagation();
+  attachMenu.classList.toggle('show');
+});
+document.addEventListener('click', e=>{
+  if(!attachMenu.contains(e.target) && e.target !== plusBtn){
+    attachMenu.classList.remove('show');
+  }
+});
+
+attachMenu.addEventListener('click', e=>{
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  const act = btn.dataset.act;
+  attachMenu.classList.remove('show');
+  if(act === 'photo') pickImage();
+  else if(act === 'voice') startRecording();
+  else if(act === 'sat'){ state.settings.mode='sat'; saveSettings(); showBanner('📚 SAT tutor rejimi yoqildi'); }
+  else if(act === 'mkt'){ state.settings.mode='mkt'; saveSettings(); showBanner('💼 Marketing rejimi yoqildi'); }
+  else if(act === 'reset'){
+    if(confirm('Suhbatni tozalashni xohlaysizmi?')){
+      state.messages = []; saveMessages(); renderAll();
+    }
+  }
+  else if(act.startsWith('soon')){
+    showBanner('⏳ Bu funksiya tez orada qo\'shiladi!');
+  }
+});
+
+micBtn.addEventListener('click', ()=>{
+  if(state.isRec) stopRecording();
+  else startRecording();
+});
+
+$('#settingsBtn').addEventListener('click', ()=>{
+  $('#setName').value = state.settings.name || '';
+  $('#setGemini').value = state.settings.geminiKey || '';
+  $('#setGroq').value = state.settings.groqKey || '';
+  $('#togTTS').classList.toggle('on', state.settings.tts);
+  $('#togDaily').classList.toggle('on', state.settings.daily);
+  openModal('settingsModal');
+});
+
+$('#saveSettings').addEventListener('click', ()=>{
+  state.settings.name = $('#setName').value.trim();
+  state.settings.geminiKey = $('#setGemini').value.trim();
+  state.settings.groqKey = $('#setGroq').value.trim();
+  saveSettings();
+  closeModal('settingsModal');
+  showBanner('✅ Sozlamalar saqlandi');
+});
+
+$('#resetMemory').addEventListener('click', ()=>{
+  if(confirm('Barcha xotira va sozlamalar o\'chirilsinmi?')){
+    localStorage.clear();
+    location.reload();
+  }
+});
+
+$('#togTTS').addEventListener('click', e=>{
+  e.currentTarget.classList.toggle('on');
+  state.settings.tts = e.currentTarget.classList.contains('on');
+});
+$('#togDaily').addEventListener('click', e=>{
+  e.currentTarget.classList.toggle('on');
+  state.settings.daily = e.currentTarget.classList.contains('on');
+});
+
+$('#notifBtn').addEventListener('click', ()=>openModal('notifModal'));
+document.querySelectorAll('[data-close]').forEach(b=>{
+  b.addEventListener('click', ()=>closeModal(b.dataset.close));
+});
+$('#reqNotif').addEventListener('click', async ()=>{
+  if(!('Notification' in window)){
+    $('#notifStatus').textContent = 'Brauzeringiz bildirishnomalarni qo\'llab-quvvatlamaydi';
+    return;
+  }
+  const p = await Notification.requestPermission();
+  state.settings.notifAsked = true;
+  saveSettings();
+  if(p === 'granted'){
+    $('#notifStatus').textContent = '✅ Ruxsat berildi! Har kuni Habarlar olasiz, bog'lanib turamiz oshna aloqada bo'lib turgin-a.';
+    new Notification('Do\'ppi AI 🎩', {body:'Bildirishnomalar yoqildi!', icon:'logo.png'});
+  } else {
+    $('#notifStatus').textContent = '❌ Ruxsat berilmadi';
+  }
+});
+
+/* ============ START ============ */
+window.addEventListener('load', ()=>{
+  // Web Speech voices yuklanishini kutish
+  if('speechSynthesis' in window) speechSynthesis.onvoiceschanged = ()=>{};
+  init();
+});
+</script>
+</body>
+</html>
