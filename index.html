@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#e9e2f7">
 <meta name="mobile-web-app-capable" content="yes">
 <title>Do'ppi AI</title>
-<link rel="icon" href="logo.png">
+<link rel="icon" href="doppi%20ai/logo.png">
 <style>
 :root{
 --ink:#1b1830;--muted:#6f6a86;--card:rgba(255,255,255,.5);--card2:rgba(255,255,255,.74);
@@ -14,18 +14,21 @@
 --violet:#b9a6f5;--pink:#f0a6d8;--blue:#a6d4f5;--mint:#a6f5e0;--sun:#f5e3a6;
 --accent:#8f6fe8;--ok:#34c77b;--danger:#ff5a6e;
 --grad:linear-gradient(135deg,#9a7cf0,#5aa9e6);--shadow:0 12px 40px rgba(80,60,160,.14);
+--bg1:#ece0f8;--bg2:#dceaf8;--bg3:#f7dcec;--bg4:#dff3ec;--bg5:#f3ead0;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased}
-body{background:linear-gradient(135deg,#ece0f8 0%,#dceaf8 28%,#f7dcec 55%,#dff3ec 80%,#f3ead0 100%);background-size:300% 300%;animation:bg 22s ease infinite}
+body{background:linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 28%,var(--bg3) 55%,var(--bg4) 80%,var(--bg5) 100%);background-size:300% 300%;animation:bg 22s ease infinite;transition:filter .4s}
 @keyframes bg{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+body.night{--ink:#e8e6f5;--muted:#9a96b5;--card:rgba(30,26,50,.55);--card2:rgba(40,34,64,.7);--stroke:rgba(255,255,255,.12);--line:rgba(255,255,255,.08);--accent:#a98fff;--bg1:#1a1530;--bg2:#161a30;--bg3:#241a30;--bg4:#152030;--bg5:#201a28}
+body.night .blob{opacity:.3}
+body.night .glass{background:rgba(30,26,50,.5)}
 .blob{position:fixed;border-radius:50%;filter:blur(95px);opacity:.5;pointer-events:none;z-index:0;animation:dr 20s ease-in-out infinite alternate}
 .b1{width:48vw;height:48vw;background:var(--violet);top:-14%;left:-10%}
 .b2{width:42vw;height:42vw;background:var(--pink);bottom:-16%;right:-8%;animation-delay:-7s}
 .b3{width:36vw;height:36vw;background:var(--blue);top:28%;right:16%;animation-delay:-12s}
 .b4{width:28vw;height:28vw;background:var(--mint);bottom:6%;left:20%;animation-delay:-4s;opacity:.42}
 @keyframes dr{from{transform:translate(0,0) scale(1)}to{transform:translate(4vw,-3vh) scale(1.14)}}
-body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.28;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96'><g fill='none' stroke='%238f6fe8' stroke-opacity='0.06' stroke-width='1.1'><path d='M48 6c12 22 12 50 0 72M48 90C36 68 36 40 48 18M6 48c22-12 50-12 72 0M90 48C68 36 40 36 18 48'/><circle cx='48' cy='48' r='8'/></g></svg>")}
 .ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
 #splash{position:fixed;inset:0;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,#ece0f8,#dceaf8,#f7dcec);animation:so .6s ease 2s forwards}
@@ -48,6 +51,7 @@ aside.side{width:266px;flex-shrink:0;display:flex;flex-direction:column;padding:
 .side .brand b{font-size:17px;font-weight:700}
 .nav-btn{display:flex;align-items:center;gap:11px;width:100%;padding:11px 12px;border:none;background:transparent;border-radius:14px;font-size:14.5px;color:var(--ink);cursor:pointer;text-align:left;transition:.15s;font-family:inherit}
 .nav-btn:hover{background:rgba(255,255,255,.6)}
+body.night .nav-btn:hover{background:rgba(255,255,255,.08)}
 .nav-btn .ic{color:var(--muted)}
 .nav-btn:hover .ic{color:var(--accent)}
 .nav-btn.on{background:var(--card2);font-weight:600}
@@ -56,11 +60,10 @@ aside.side{width:266px;flex-shrink:0;display:flex;flex-direction:column;padding:
 .new-chat .ic{color:var(--accent)}
 .new-chat:hover{transform:translateY(-1px)}
 .side .sec{font-size:12px;color:var(--muted);padding:14px 12px 6px;display:flex;justify-content:space-between;align-items:center;font-weight:600}
-.side .sec button{border:none;background:transparent;color:var(--muted);cursor:pointer;padding:2px;display:flex}
-.side .sec button:hover{color:var(--accent)}
 .folder-item,.chat-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:12px;font-size:14px;cursor:pointer;color:var(--ink);white-space:nowrap;overflow:hidden;transition:.12s;border:none;background:transparent;width:100%;text-align:left;font-family:inherit}
 .folder-item .ic,.chat-item .ic{width:16px;height:16px;color:var(--muted)}
 .folder-item:hover,.chat-item:hover{background:rgba(255,255,255,.55)}
+body.night .folder-item:hover,body.night .chat-item:hover{background:rgba(255,255,255,.08)}
 .chat-item.active{background:var(--card2);font-weight:600;box-shadow:0 3px 12px rgba(80,60,160,.08)}
 .chat-item.active .ic{color:var(--accent)}
 .chat-item span,.folder-item span{overflow:hidden;text-overflow:ellipsis}
@@ -77,7 +80,7 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 .topbar img{width:30px;height:30px;border-radius:50%;object-fit:cover}
 .topbar b{flex:1;font-size:16px}
 .burger{border:none;background:var(--card2);width:40px;height:40px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(80,60,160,.12);color:var(--ink);transition:.15s}
-.burger:active{transform:scale(.9);background:rgba(255,255,255,.9)}
+.burger:active{transform:scale(.9)}
 
 .scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding:14px 14px 6px}
 .scroll::-webkit-scrollbar{width:5px}.scroll::-webkit-scrollbar-thumb{background:rgba(27,24,48,.14);border-radius:3px}
@@ -100,6 +103,7 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 .m.bot{align-self:flex-start;background:var(--card2);border:1px solid var(--stroke);border-bottom-left-radius:6px}
 .m.user{align-self:flex-end;background:var(--grad);color:#fff;border-bottom-right-radius:6px;box-shadow:0 6px 18px rgba(143,111,232,.3)}
 .m.sys{align-self:center;background:rgba(255,255,255,.5);border:1px solid var(--stroke);color:var(--muted);font-size:12.5px;padding:6px 14px;border-radius:14px;text-align:center}
+body.night .m.sys{background:rgba(255,255,255,.06)}
 .m img.att{max-width:100%;border-radius:12px;margin-top:5px;display:block}
 .m .tm{display:block;font-size:10px;opacity:.5;margin-top:4px;text-align:right}
 .m .acts{position:absolute;top:-11px;right:6px;display:none;gap:4px}
@@ -112,6 +116,7 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
 
 .comp{padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--stroke);background:rgba(255,255,255,.5);backdrop-filter:blur(20px)}
+body.night .comp{background:rgba(30,26,50,.5)}
 .crow{display:flex;align-items:center;gap:8px}
 .cbtn{width:44px;height:44px;border-radius:14px;border:1px solid var(--stroke);background:var(--card2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s;color:var(--ink);flex-shrink:0}
 .cbtn:active{transform:scale(.9)}
@@ -122,11 +127,9 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 .cbtn.send .ic{color:#fff;width:22px;height:22px}
 .cbtn.send:disabled{opacity:.35;box-shadow:none}
 .inp-wrap{flex:1;display:flex;align-items:center;background:rgba(255,255,255,.65);border:1px solid var(--stroke);border-radius:22px;padding:0 6px 0 14px;min-height:44px}
+body.night .inp-wrap{background:rgba(40,34,64,.6)}
 .inp-wrap textarea{flex:1;border:none;outline:none;background:transparent;font-size:15px;font-family:inherit;color:var(--ink);resize:none;max-height:100px;line-height:1.4;padding:11px 0}
 .inp-wrap textarea::placeholder{color:var(--muted)}
-.mini-pill{display:flex;align-items:center;gap:5px;padding:6px 10px;border-radius:12px;border:1px solid var(--stroke);background:rgba(255,255,255,.5);font-size:11.5px;cursor:pointer;color:var(--muted);font-family:inherit;flex-shrink:0;white-space:nowrap}
-.mini-pill .ic{width:13px;height:13px}
-.mini-pill b{color:var(--ink);font-weight:600}
 
 .pages{flex:1;position:relative;overflow:hidden}
 .page{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
@@ -138,61 +141,66 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 .lib-item{display:flex;gap:11px;align-items:center}
 .lib-item img{width:54px;height:54px;border-radius:12px;object-fit:cover;flex-shrink:0}
 .lib-item .tx{flex:1;font-size:13.5px;line-height:1.4;max-height:40px;overflow:hidden;color:var(--ink)}
-.lib-item .dt{font-size:10.5px;color:var(--muted);margin-top:3px}
 .lib-item .del{border:none;background:rgba(255,90,110,.1);color:var(--danger);width:34px;height:34px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .empty{text-align:center;color:var(--muted);font-size:14px;padding:40px 20px}
 .empty .ic{width:44px;height:44px;color:var(--accent);opacity:.5;margin:0 auto 12px;stroke-width:1.4}
 .gen-box{display:flex;flex-direction:column;gap:10px}
 .gen-box textarea{width:100%;min-height:90px;border:1px solid var(--stroke);border-radius:16px;padding:13px;font-size:15px;font-family:inherit;background:rgba(255,255,255,.6);outline:none;resize:vertical;color:var(--ink)}
+body.night .gen-box textarea{background:rgba(40,34,64,.6)}
 .gen-box textarea:focus{border-color:var(--accent)}
 .btn{padding:13px 18px;border-radius:14px;border:none;cursor:pointer;font-size:14.5px;font-weight:600;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
 .btn:active{transform:scale(.97)}
 .btn.p{background:var(--grad);color:#fff;box-shadow:0 6px 18px rgba(143,111,232,.35)}
 .btn.p .ic{color:#fff}
 .btn.g{background:rgba(27,24,48,.06);color:var(--ink)}
+body.night .btn.g{background:rgba(255,255,255,.08)}
 .btn.full{width:100%}
 .preview{border-radius:16px;overflow:hidden;border:1px solid var(--stroke);background:rgba(255,255,255,.4);min-height:120px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+body.night .preview{background:rgba(40,34,64,.4)}
 .preview img{width:100%;display:block}
 .sw{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-size:14.5px}
 .sw:last-of-type{border:none}
 .tg{width:46px;height:27px;border-radius:14px;background:rgba(27,24,48,.15);position:relative;cursor:pointer;transition:.2s;flex-shrink:0}
+body.night .tg{background:rgba(255,255,255,.15)}
 .tg.on{background:var(--ok)}
 .tg::after{content:"";position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 2px 6px rgba(0,0,0,.2)}
 .tg.on::after{left:22px}
 .field{margin-bottom:13px}
 .field label{display:block;font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600}
-.field input{width:100%;padding:12px 14px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.7);font-size:14px;outline:none;font-family:inherit;color:var(--ink)}
-.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(143,111,232,.15)}
+.field select,.field input[type=text]{width:100%;padding:12px 14px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.7);font-size:14px;outline:none;font-family:inherit;color:var(--ink)}
+body.night .field select,body.night .field input[type=text]{background:rgba(40,34,64,.7)}
+.field select:focus,.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(143,111,232,.15)}
 .prof-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .prof-head img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 6px 20px rgba(143,111,232,.3)}
 .prof-head .pn{font-size:18px;font-weight:700}
 .prof-head .pu{font-size:13px;color:var(--muted)}
-.kbadge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:8px;background:rgba(52,199,123,.15);color:var(--ok);font-weight:600;margin-left:6px}
-.kbadge.off{background:rgba(27,24,48,.06);color:var(--muted)}
 
 .modal{position:fixed;inset:0;z-index:200;background:rgba(40,30,80,.3);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:18px}
 .modal.show{display:flex}
 .mcard{width:100%;max-width:440px;max-height:88vh;overflow-y:auto;padding:24px;border-radius:26px;animation:pop .3s;background:rgba(255,255,255,.9);backdrop-filter:blur(30px);border:1px solid var(--stroke);box-shadow:0 30px 90px rgba(60,40,140,.3)}
+body.night .mcard{background:rgba(30,26,50,.92)}
 .mcard h2{font-size:19px;font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
 .mcard h2 .x{border:none;background:rgba(27,24,48,.06);width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--muted);display:flex;align-items:center;justify-content:center}
+body.night .mcard h2 .x{background:rgba(255,255,255,.1)}
 .mcard h2 .x .ic{width:16px;height:16px}
 .mcard .desc{font-size:13.5px;color:var(--muted);margin-bottom:16px;line-height:1.5}
-.tg-login{display:flex;justify-content:center;margin:8px 0 14px}
 .or-div{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px;margin:14px 0}
 .or-div::before,.or-div::after{content:"";flex:1;height:1px;background:var(--line)}
 .dd{position:fixed;z-index:120;min-width:210px;padding:8px;border-radius:16px;background:rgba(255,255,255,.92);backdrop-filter:blur(24px);border:1px solid var(--stroke);box-shadow:0 16px 50px rgba(60,40,140,.22);display:none}
+body.night .dd{background:rgba(30,26,50,.95)}
 .dd.show{display:block;animation:pop .18s}
 .dd button{display:flex;align-items:center;gap:9px;width:100%;padding:11px 12px;border:none;background:transparent;border-radius:10px;font-size:14px;cursor:pointer;color:var(--ink);text-align:left;font-family:inherit}
 .dd button .ic{width:16px;height:16px;color:var(--muted)}
 .dd button:hover{background:rgba(143,111,232,.1)}
-.dd button:hover .ic{color:var(--accent)}
 .dd button.sel{font-weight:600;color:var(--accent)}
 .dd button.sel .ic{color:var(--accent)}
 .dd .dng,.dd .dng .ic{color:var(--danger)}
 .dd hr{border:none;border-top:1px solid var(--line);margin:5px 8px}
 .dd .soon{margin-left:auto;font-size:10px;color:var(--muted);background:rgba(27,24,48,.06);padding:2px 8px;border-radius:8px}
+body.night .dd .soon{background:rgba(255,255,255,.1)}
 
 .banner{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-90px);z-index:400;padding:11px 18px;border-radius:14px;font-size:13px;font-weight:600;background:rgba(255,255,255,.94);backdrop-filter:blur(20px);border:1px solid var(--stroke);box-shadow:0 12px 40px rgba(60,40,140,.25);transition:transform .35s cubic-bezier(.2,.9,.3,1.2);color:var(--ink);max-width:92vw;text-align:center}
+body.night .banner{background:rgba(30,26,50,.95)}
 .banner.show{transform:translateX(-50%) translateY(0)}
 .banner.err{background:rgba(255,90,110,.95);color:#fff;border-color:transparent}
 
@@ -202,6 +210,7 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 @media(max-width:860px){
  .shell{padding:0;gap:0}
  aside.side{position:fixed;left:0;top:0;bottom:0;z-index:150;border-radius:0 24px 24px 0;width:284px;transform:translateX(-105%);transition:transform .2s ease-out;background:rgba(255,255,255,.92);box-shadow:8px 0 30px rgba(60,40,140,.1)}
+ body.night aside.side{background:rgba(30,26,50,.95)}
  aside.side.open{transform:translateX(0)}
  main{border-radius:0}
  .topbar{display:flex}
@@ -250,26 +259,28 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
 <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
 <symbol id="i-new" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
 </defs></svg>
 
-<div id="splash"><img class="sl lg" src="logo.png" alt="" width="74" height="74"><div class="sn">Do'ppi AI</div><div class="sd"><i></i><i></i><i></i></div></div>
+<div id="splash"><img class="sl lg" src="doppi%20ai/logo.png" alt="" width="74" height="74"><div class="sn">Do'ppi AI</div><div class="sd"><i></i><i></i><i></i></div></div>
 <div class="scrim" id="scrim"></div>
 
 <div class="shell">
  <aside class="side glass" id="side">
-  <div class="brand"><img class="lg" src="logo.png" alt="" width="34" height="34"><b>Do'ppi AI</b></div>
+  <div class="brand"><img class="lg" src="doppi%20ai/logo.png" alt="" width="34" height="34"><b>Do'ppi AI</b></div>
   <button class="nav-btn new-chat" data-nav="new"><svg class="ic"><use href="#i-chat"/></svg> Yangi suhbat</button>
   <button class="nav-btn" data-nav="search"><svg class="ic"><use href="#i-search"/></svg> Qidirish</button>
   <button class="nav-btn" data-nav="lib"><svg class="ic"><use href="#i-lib"/></svg> Kutubxona</button>
   <button class="nav-btn" data-nav="img"><svg class="ic"><use href="#i-image"/></svg> AI rasmlar</button>
   <button class="nav-btn" data-nav="vid"><svg class="ic"><use href="#i-video"/></svg> AI videolar</button>
   <button class="nav-btn" data-nav="code"><svg class="ic"><use href="#i-code"/></svg> AI kod</button>
-  <div class="sec">Papkalar <button data-nav="addfolder"><svg class="ic" style="width:16px;height:16px"><use href="#i-plus"/></svg></button></div>
+  <div class="sec">Papkalar</div>
   <div id="folders"></div>
   <div class="sec">Suhbatlar</div>
   <div class="chats-scroll" id="chatList"></div>
   <div class="side-foot">
-   <img class="lg" id="footAv" src="logo.png" alt="" width="32" height="32">
+   <img class="lg" id="footAv" src="doppi%20ai/logo.png" alt="" width="32" height="32">
    <div class="nm" id="footName">Mehmon</div>
    <button class="gear" data-nav="set"><svg class="ic"><use href="#i-gear"/></svg></button>
   </div>
@@ -278,9 +289,9 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
  <main class="glass main-glass">
   <div class="topbar">
    <button class="burger" data-nav="drawer"><svg class="ic"><use href="#i-menu"/></svg></button>
-   <img class="lg" src="logo.png" alt="" width="30" height="30">
+   <img class="lg" src="doppi%20ai/logo.png" alt="" width="30" height="30">
    <b>Do'ppi AI</b>
-   <button class="burger" data-nav="bell" style="box-shadow:none;background:transparent"><svg class="ic"><use href="#i-bell"/></svg></button>
+   <button class="burger" data-act="night-toggle" style="box-shadow:none;background:transparent"><svg class="ic" id="nightIc"><use href="#i-moon"/></svg></button>
   </div>
 
   <div class="pages">
@@ -307,7 +318,6 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
       <button class="cbtn" data-act="attach"><svg class="ic"><use href="#i-plus"/></svg></button>
       <div class="inp-wrap">
        <textarea id="input" rows="1" placeholder="Xabar yozing..."></textarea>
-       <button class="mini-pill" data-act="model"><svg class="ic"><use href="#i-sparkle"/></svg> <b id="modelName">Bepul AI</b> <svg class="ic" style="width:11px;height:11px"><use href="#i-chev"/></svg></button>
       </div>
       <button class="cbtn" data-act="call" title="Ovozli qo'ng'iroq"><svg class="ic"><use href="#i-phone"/></svg></button>
       <button class="cbtn" data-act="mic" title="Ovozli kiritish"><svg class="ic"><use href="#i-mic"/></svg></button>
@@ -338,32 +348,36 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
     </div>
    </div>
 
-   <!-- SET -->
+   <!-- SET (faqat: tun/kun, til, xarakter) -->
    <div class="page" id="p-set">
     <div class="page-pad">
      <h2>Sozlamalar</h2>
-     <p class="sub">Profil va 7 ta AI kalitlari.</p>
+     <p class="sub">Ko'rinish, til va Do'ppi xarakteri.</p>
      <div class="card">
-      <div class="prof-head">
-       <img class="lg" id="setAv" src="logo.png" alt="" width="64" height="64">
-       <div><div class="pn" id="setName2">Mehmon</div><div class="pu" id="setUser">@mehmon</div></div>
+      <div class="sw"><span style="display:flex;align-items:center;gap:9px"><svg class="ic" style="width:18px;height:18px"><use href="#i-moon"/></svg> Tun rejimi</span><div class="tg" data-tg="night"></div></div>
+      <div class="sw"><span style="display:flex;align-items:center;gap:9px"><svg class="ic" style="width:18px;height:18px"><use href="#i-speaker"/></svg> Ovozli javob (TTS)</span><div class="tg on" data-tg="tts"></div></div>
+     </div>
+     <div class="card">
+      <div class="field"><label>Til / Language</label>
+       <select id="selLang">
+        <option value="uz">🇺 O'zbek (lotin)</option>
+        <option value="ru">🇷 Русский</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="tr">🇹🇷 Türkçe</option>
+       </select>
       </div>
-      <button class="btn g full" data-act="login"><svg class="ic"><use href="#i-user"/></svg> Telegram bilan kirish</button>
      </div>
      <div class="card">
-      <div class="field"><label>Gemini API kalit <span class="kbadge off" id="kbGem">yo'q</span></label><input type="password" id="kGem" placeholder="AQ.Ab8RN6KQaHrmaa62sDyoJOy6oczPXsVX69i_Oc5-pnS7fzbTBw"></div>
-      <div class="field"><label>Groq API kalit <span class="kbadge off" id="kbGroq">yo'q</span></label><input type="password" id="kGroq" placeholder="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"></div>
-      <div class="field"><label>OpenRouter API kalit <span class="kbadge off" id="kbOr">yo'q</span></label><input type="password" id="kOr" placeholder="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"></div>
-      <div class="field"><label>Cerebras API kalit <span class="kbadge off" id="kbCb">yo'q</span></label><input type="password" id="kCb" placeholder="csk-5jnvdhffh86r5y62xm4c2fcyrym8k9kew98mh89k3kfwvhcn"></div>
-      <div class="field"><label>Cloudflare Account ID <span class="kbadge off" id="kbCf">yo'q</span></label><input type="text" id="kCfAcc" placeholder="5b593fe4d713849d1965c23333835a9f"></div>
-      <div class="field"><label>Cloudflare API token <span class="kbadge off" id="kbCf2">yo'q</span></label><input type="password" id="kCfTok" placeholder="cfat_N6EsTI0fjfE9d8iTUBEWLjzhgoHHJvCBbEBfB9ALaf57ad70"></div>
-      <div class="field"><label>HuggingFace API kalit <span class="kbadge off" id="kbHf">yo'q</span></label><input type="password" id="kHf" placeholder="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"></div>
-      <button class="btn p full" data-act="save-keys"><svg class="ic"><use href="#i-check"/></svg> Kalitlarni saqlash</button>
-      <p style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center">Kalitsiz ham ishlayveradi (Pollinations). Kalit qo'shsangiz — kuchliroq va tezroq.</p>
-     </div>
-     <div class="card">
-      <div class="sw"><span>Ovozli javob (TTS)</span><div class="tg on" data-tg="tts"></div></div>
-      <div class="sw"><span>Kunlik motivatsiya</span><div class="tg on" data-tg="daily"></div></div>
+      <div class="field"><label>Do'ppi xarakteri</label>
+       <select id="selChar">
+        <option value="dost">😊 Samimiy do'st — iliq, hazilkash, oddiy</option>
+        <option value="olim">🎓 Olim — chuqur, ilmiy, tahliliy</option>
+        <option value="tutor">📐 SAT Tutor — bosqichma-bosqich, sabrli</option>
+        <option value="marketing">📣 Marketingchi — sotuvchi, ta'sirli</option>
+        <option value="dasturchi">💻 Dasturchi — aniq, izohli kod</option>
+       </select>
+      </div>
+      <p class="sub" style="margin:0">Tanlagan xarakteringizga qarab Do'ppi shu ohangda javob beradi.</p>
      </div>
      <div class="card">
       <button class="btn g full" data-act="reset-chat"><svg class="ic"><use href="#i-trash"/></svg> Suhbatlarni tozalash</button>
@@ -382,29 +396,19 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
  <hr><button data-act="soon"><svg class="ic"><use href="#i-doc"/></svg> PDF <span class="soon">tez orada</span></button>
  <button data-act="soon"><svg class="ic"><use href="#i-video"/></svg> Video <span class="soon">tez orada</span></button>
 </div>
-<div class="dd" id="modelDD">
- <button data-m="free" class="sel"><svg class="ic"><use href="#i-sparkle"/></svg> Bepul AI (doim ishlaydi)</button>
- <button data-m="gemini"><svg class="ic"><use href="#i-image"/></svg> Gemini</button>
- <button data-m="groq"><svg class="ic"><use href="#i-code"/></svg> Groq</button>
- <button data-m="openrouter"><svg class="ic"><use href="#i-lib"/></svg> OpenRouter</button>
- <button data-m="cerebras"><svg class="ic"><use href="#i-bulb"/></svg> Cerebras</button>
- <button data-m="cloudflare"><svg class="ic"><use href="#i-map"/></svg> Cloudflare</button>
- <button data-m="huggingface"><svg class="ic"><use href="#i-doc"/></svg> HuggingFace</button>
-</div>
 <div class="dd" id="chatDD">
  <button data-c="rename"><svg class="ic"><use href="#i-edit"/></svg> Nomini o'zgartirish</button>
- <button data-c="folder"><svg class="ic"><use href="#i-folder"/></svg> Papkaga joylash</button>
  <button data-c="delete" class="dng"><svg class="ic"><use href="#i-trash"/></svg> O'chirish</button>
 </div>
 
 <!-- modals -->
 <div class="modal" id="loginModal">
  <div class="mcard" style="text-align:center">
-  <h2 style="justify-content:center">Telegram bilan kirish <button class="x" data-x="loginModal"><svg class="ic"><use href="#i-x"/></svg></button></h2>
-  <p class="desc">Telegram hisobingiz bilan bir bosishda kiring — profilingiz avtomatik to'ladı.</p>
-  <div class="tg-login" id="tgLoginBox"></div>
-  <div class="or-div">yoki</div>
-  <button class="btn g full" data-act="guest"><svg class="ic"><use href="#i-user"/></svg> Mehmon davom etish</button>
+  <img class="lg" src="doppi%20ai/logo.png" alt="" width="64" height="64" style="border-radius:50%;object-fit:cover;margin:0 auto 12px;display:block;box-shadow:0 8px 26px rgba(143,111,232,.3)">
+  <h2 style="justify-content:center">Do'ppi AI'ga xush kelibsiz</h2>
+  <p class="desc">Ismingizni kiriting — Do'ppi sizni taniydi va eslab qoladi.</p>
+  <div class="field"><input type="text" id="onName" placeholder="Ismingiz..." maxlength="30"></div>
+  <button class="btn p full" data-act="start"><svg class="ic"><use href="#i-check"/></svg> Boshlash</button>
  </div>
 </div>
 <div class="modal" id="askModal">
@@ -417,20 +421,14 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 <div class="modal" id="searchModal">
  <div class="mcard">
   <h2>Qidirish <button class="x" data-x="searchModal"><svg class="ic"><use href="#i-x"/></svg></button></h2>
-  <div class="field"><input id="searchIn" placeholder="Suhbatlar bo'ylab qidiring..."></div>
+  <div class="field"><input type="text" id="searchIn" placeholder="Suhbatlar bo'ylab qidiring..."></div>
   <div id="searchRes"></div>
- </div>
-</div>
-<div class="modal" id="foldModal">
- <div class="mcard">
-  <h2>Papka tanlang <button class="x" data-x="foldModal"><svg class="ic"><use href="#i-x"/></svg></button></h2>
-  <div id="foldList"></div>
  </div>
 </div>
 <div class="modal" id="notModal">
  <div class="mcard">
   <h2>Bildirishnomalar <button class="x" data-x="notModal"><svg class="ic"><use href="#i-x"/></svg></button></h2>
-  <p class="desc">Do'ppi AI har kuni ertalab motivatsiya va maslahat yuboradi. Ruxsat berasizmi?</p>
+  <p class="desc">Do'ppi AI har kuni ertalab motivatsiya yuboradi. Ruxsat berasizmi?</p>
   <div style="display:flex;gap:9px"><button class="btn g" data-x="notModal">Hozir emas</button><button class="btn p" id="notReq" style="flex:1"><svg class="ic"><use href="#i-bell"/></svg> Ruxsat berish</button></div>
   <p id="notSt" style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center"></p>
  </div>
@@ -440,154 +438,155 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 
 <script>
 /* ═══════════════════════════════════════════════════════════ */
-/* ══  >>> SHU YERGA O'ZINGIZNING 7 TA API KALITINGIZNI <<<   */
-/* ══  >>>             YOZIB QO'YING                        <<<   */
+/* ══                                                        ║ */
+/* ══   >>> SHU YERGA API KALITLARINGIZNI YOZING <<<        ║ */
+/* ══                                                        ║ */
+/* ══   Bo'sh joylarga kalitlaringizni qo'ysangiz, sayt     ║ */
+/* ══   avtomatik o'sha AI lardan foydalanadi.              ║ */
+/* ══                                                        ║ */
 /* ═══════════════════════════════════════════════════════════ */
 const CONFIG = {
-  // Bot username (Telegram login uchun)
-  botUsername: 'duppi_ai_bot',
-
-  // ── 1. GEMINI (Google) ──────────────────────────────────────
-  geminiKey: '',        // ← "AIzaSy..." ni bu yerga yozing
-
-  // ── 2. GROQ (tez AI) ────────────────────────────────────────
-  groqKey: '',          // ← "gsk_..." ni bu yerga yozing
-
-  // ── 3. OPENROUTER ───────────────────────────────────────────
-  openRouterKey: '',    // ← "sk-or-..." ni bu yerga yozing
-
-  // ── 4. CEREBRAS ─────────────────────────────────────────────
-  cerebrasKey: '',      // ← "cere_..." ni bu yerga yozing
-
-  // ── 5. CLOUDFLARE Workers AI ────────────────────────────────
-  cfAccountId: '',      // ← account ID ni bu yerga yozing
-  cfApiToken: '',       // ← API token ni bu yerga yozing
-
-  // ── 6. HUGGINGFACE ──────────────────────────────────────────
-  hfKey: '',            // ← "hf_..." ni bu yerga yozing
-
-  // ── 7. POLLINATIONS (bepul, kalitsiz ishlaydi) ──────────────
-  pollinationsModel: 'openai'   // model nomi
+  
+  // ── LOGO JOYLASHUVI ──────────────────────────────────────
+  logoPath: 'doppi%20ai/logo.png',  // ← "doppi ai" papkasidagi logo.png
+  
+  // ── 1. GEMINI (Google) ───────────────────────────────────
+  //    Rasm taniydi + kuchli AI
+  //    https://aistudio.google.com → Get API Key
+  geminiKey: 'AQ.Ab8RN6KQaHrmaa62sDyoJOy6oczPXsVX69i_Oc5-pnS7fzbTBw',                    // ← "AIzaSy..." ni bu yerga yozing
+  
+  // ── 2. GROQ (juda TEZ, bepul) ────────────────────────────
+  //    https://console.groq.com → API Keys → Create
+  groqKey: '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',                      // ← "gsk_..." ni bu yerga yozing
+  
+  // ── 3. OPENROUTER ────────────────────────────────────────
+  //    https://openrouter.ai/keys
+  openRouterKey: '',                // ← "sk-or-..." ni bu yerga yozing
+  
+  // ── 4. CEREBRAS ──────────────────────────────────────────
+  //    https://cloud.cerebras.ai
+  cerebrasKey: '',                  // ← "cere_..." ni bu yerga yozing
+  
+  // ── 5. CLOUDFLARE Workers AI ─────────────────────────────
+  //    Dashboard → Account ID + API Token
+  cfAccountId: '',                  // ← account ID ni bu yerga yozing
+  cfApiToken: '',                   // ← token ni bu yerga yozing
+  
+  // ── 6. HUGGINGFACE ───────────────────────────────────────
+  //    https://huggingface.co/settings/tokens
+  hfKey: ''                         // ← "hf_..." ni bu yerga yozing
+  
 };
 /* ═══════════════════════════════════════════════════════════ */
-/* ══  Yuqoridagi bo'sh joylarga kalitlaringizni yozsangiz,   */
-/* ══  sayt avtomatik o'sha AI lardan foydalanadi.             */
+/*                                                            */
+/*  MASLAHAT: Kamida GROQ ni yozing — bepul va juda tez.     */
+/*  Groq bo'lmasa Gemini. Ikkalasini ham yozsangiz super.    */
+/*  Hech biri bo'lmasa — Pollinations (bepul) sinovdan o'tadi*/
+/*                                                            */
 /* ═══════════════════════════════════════════════════════════ */
 
 
 window.onerror=function(m,s,l){try{var b=document.getElementById('banner');if(b){b.className='banner err show';b.textContent='Xato ('+l+'): '+m;setTimeout(function(){b.classList.remove('show')},8000)}}catch(e){}return false};
 
 var mem={};
-var S={get:function(k,d){try{var v=localStorage.getItem(k);return v==null?(k in mem?mem[k]:d):JSON.parse(v)}catch(e){return k in mem?mem[k]:d}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){mem[k]=v}},del:function(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}},raw:function(k,d){try{var v=localStorage.getItem(k);return v==null?(k in mem?mem[k]:d):v}catch(e){return k in mem?mem[k]:d}}};
+var S={get:function(k,d){try{var v=localStorage.getItem(k);return v==null?(k in mem?mem[k]:d):JSON.parse(v)}catch(e){return k in mem?mem[k]:d}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){mem[k]=v}},raw:function(k,d){try{var v=localStorage.getItem(k);return v==null?(k in mem?mem[k]:d):v}catch(e){return k in mem?mem[k]:d}}};
 
-/* LOGO: aynan logo.png dan foydalanadi (gradient fallback YO'Q) */
-function loadLogos(){document.querySelectorAll('img.lg').forEach(function(el){if(!el.src||el.src.endsWith('/logo.png'))el.src='logo.png'})}
-
-var SYS="Sen Do'ppi AI san - o'zbekcha gaplashadigan samimiy do'st va aqlli yordamchi.\n"+
-"KIMLIGING: O'zbek yoshlari uchun yaratilgan sun'iy intellektli do'st. Asosching: Bahodir Jo'rayev (@Jbahodri).\n"+
-"'Kimsan' deb so'rashsa: 'Men Do'ppi AI man - o'zbek yoshlarining raqamli do'sti, Bahodir Jo'rayev yaratgan' deb qisqa, iliq javob ber.\n"+
-"TIL: FAQAT toza adabiy o'zbek tilida. Ruscha/inglizcha aralashtirma. Imloviy xatosiz, milliy lahza bilan.\n"+
-"YOZISH: Markdown belgilarisiz (**, *, ###). Toza matn. Tartib kerak bo'lsa: 1. 2. 3.\n"+
-"ROL: Do'stona suhbatda - samimiy do'st. Ilm-fanda - olim. SAT - tutor (bosqichma-bosqich). Biznes/post - marketing. Kod - dasturchi.\n"+
-"OVOZ: Ovozli suhbatda javobingni QISQA (1-3 gap), tabiiy gapiriladigan qilib yoz.\n"+
-"USLUB: Oddiy suhbatda 1-4 gap. Tabiiy savol ber. Hazilni tushun. 'yana savol bormi' dema.";
-var MODES={sat:"\nSAT TUTOR: misolni bosqichma-bosqich yech, har qadamni tushuntir, oxirida mashq ber.",mkt:"\nMARKETING: sarlavha, foyda, isbot, CTA. Emoji va heshteg. Sotuvchi, samimiy.",code:"\nKOD: toza, ishlaydigan, izohli kod yoz. Tilni ko'rsat."};
-var MNAME={free:"Bepul AI",gemini:"Gemini",groq:"Groq",openrouter:"OpenRouter",cerebras:"Cerebras",cloudflare:"Cloudflare",huggingface:"HuggingFace"};
-
-var DB={chats:S.get('dp_chats',[]),folders:S.get('dp_fold',[]),library:S.get('dp_lib',[]),profile:S.get('dp_prof',null),settings:Object.assign({tts:true,daily:true,model:'free',mode:'chat',logged:false,gem:'',groq:'',or:'',cb:'',cfAcc:'',cfTok:'',hf:''},S.get('dp_set',{})),active:''};
-
-/* CONFIG dan kalitlarni yuklash (agar Sozlamalarda bo'sh bo'lsa) */
-function initKeysFromConfig(){var s=DB.settings;if(!s.gem&&CONFIG.geminiKey)s.gem=CONFIG.geminiKey;if(!s.groq&&CONFIG.groqKey)s.groq=CONFIG.groqKey;if(!s.or&&CONFIG.openRouterKey)s.or=CONFIG.openRouterKey;if(!s.cb&&CONFIG.cerebrasKey)s.cb=CONFIG.cerebrasKey;if(!s.cfAcc&&CONFIG.cfAccountId)s.cfAcc=CONFIG.cfAccountId;if(!s.cfTok&&CONFIG.cfApiToken)s.cfTok=CONFIG.cfApiToken;if(!s.hf&&CONFIG.hfKey)s.hf=CONFIG.hfKey}
-initKeysFromConfig();
-
-function sv(){S.set('dp_chats',DB.chats);S.set('dp_fold',DB.folders);S.set('dp_lib',DB.library);if(DB.profile)S.set('dp_prof',DB.profile);S.set('dp_set',DB.settings)}
 var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
 var uid=function(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)};
 var esc=function(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')};
 var fmt=function(t){var d=new Date(t);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')};
 function banner(t){var b=$('#banner');if(!b)return;b.className='banner show';b.textContent=t;setTimeout(function(){b.classList.remove('show')},2800)}
 
+/* ===== LANG & CHARACTER PROMPTS ===== */
+var LANG={uz:"FAQAT toza adabiy O'ZBEK TILIDA yoz. Ruscha/inglizcha so'zlarni aralashtirma. Imloviy xatosiz, milliy lahza va samimiylik bilan.",ru:"Пиши ТОЛЬКО на чистом русском языке. Без смешения с другими языками.",en:"Write ONLY in clean English. No mixing of languages.",tr:"SADECE temiz Türkçe yaz."};
+var CHARACTERS={
+ dost:"Sen Do'ppi AI san - o'zbek yoshlari uchun yaratilgan SAMIMIY DO'STsan. Asosching: Bahodir Jo'rayev (@Jbahodri). 'Kimsan?' desang: 'Men Do'ppi AI man - sening raqamli do'sting, Bahodir Jo'rayev yaratgan'. Ohang: iliq, hazilkash, samimiy, oddiy suhbatda 1-4 gap. Tabiiy savol ber, hazilni tushun. 'yana savol bormi' dema.",
+ olim:"Sen Do'ppi AI san - chuqur bilimlarga ega OLIMSAN. Asosching: Bahodir Jo'rayev (@Jbahodri). Javoblaring ilmiy, tahliliy, dalillar bilan, lekin tushunarli. Murakkab mavzuni sodda qilib tushuntir.",
+ tutor:"Sen Do'ppi AI san - SABRLI SAT/Matematika TUTORI. Asosching: Bahodir Jo'rayev (@Jbahodri). Misolni BOSQICHMA-BOSQICH yech, har qadamni tushuntir, tipik xatolarni ko'rsat, oxirida o'xshash mashq ber.",
+ marketing:"Sen Do'ppi AI san - tajribali MARKETING MUTAXASSISI. Asosching: Bahodir Jo'rayev (@Jbahodri). Sarlavha-foyda-isbot-CTA ketma-ketligida yoz. Emoji va heshteg qo'sh. Sotuvchi, ta'sirli, samimiy.",
+ dasturchi:"Sen Do'ppi AI san - tajribali DASTURCHI. Asosching: Bahodir Jo'rayev (@Jbahodri). Toza, ishlaydigan, izohli kod yoz. Til va tushuntirishni aniq ko'rsat. Best practice'larni qo'lla."
+};
+var BASE_RULES="\nYOZISH: Markdown belgilarisiz (**, *, ###, \`\`\`). Toza matn. Tartib kerak bo'lsa: 1. 2. 3.\nOVOZ: Ovozli suhbatda javobingni QISQA (1-3 gap), tabiiy gapiriladigan qilib yoz.";
+
+/* ===== DB ===== */
+var DB={chats:S.get('dp_chats',[]),library:S.get('dp_lib',[]),profile:S.get('dp_prof',null),settings:Object.assign({tts:true,night:false,lang:'uz',character:'dost'},S.get('dp_set',{})),active:''};
+function sv(){S.set('dp_chats',DB.chats);S.set('dp_lib',DB.library);if(DB.profile)S.set('dp_prof',DB.profile);S.set('dp_set',DB.settings)}
+
+/* ===== THEME ===== */
+function applyTheme(){document.body.classList.toggle('night',!!DB.settings.night);var ic=$('#nightIc');if(ic)ic.innerHTML='<use href="#'+(DB.settings.night?'sun':'moon')+'"/>';}
+
+/* ===== NAV ===== */
 function goPage(p){$$('.page').forEach(function(x){x.classList.remove('on')});var el=$('#p-'+p);if(el)el.classList.add('on');$$('.nav-btn[data-nav]').forEach(function(b){b.classList.toggle('on',b.dataset.nav===p)});if(p==='lib')renderLib();if(p==='set')renderSet();if(p==='chat')renderChat();closeDrawer()}
 function openDrawer(){$('#side').classList.add('open');$('#scrim').classList.add('show')}
 function closeDrawer(){$('#side').classList.remove('open');$('#scrim').classList.remove('show')}
 
-function newChat(open){var c={id:uid(),title:'Yangi suhbat',folder:'',msgs:[],created:Date.now()};DB.chats.unshift(c);if(open!==false)DB.active=c.id;sv();goPage('chat');renderChat();renderSide();if(open!==false){var el=$('#input');if(el)el.focus()}}
+/* ===== CHAT ===== */
+function newChat(open){var c={id:uid(),title:'Yangi suhbat',msgs:[],created:Date.now()};DB.chats.unshift(c);if(open!==false)DB.active=c.id;sv();goPage('chat');renderChat();renderSide();if(open!==false){var el=$('#input');if(el)el.focus()}}
 function ac(){return DB.chats.find(function(c){return c.id===DB.active})}
 function openChat(id){DB.active=id;sv();goPage('chat');renderChat();renderSide();closeDrawer()}
 function delChat(id){DB.chats=DB.chats.filter(function(c){return c.id!==id});if(DB.active===id)DB.active='';sv();renderChat();renderSide()}
 function ensure(){if(!ac())newChat(false);return ac()}
 
 function renderSide(){
- $('#folders').innerHTML=DB.folders.map(function(f){return '<button class="folder-item" data-fold="'+f.id+'"><svg class="ic"><use href="#i-folder"/></svg><span>'+esc(f.name)+'</span></button>'}).join('')||'';
+ $('#folders').innerHTML='';
  $('#chatList').innerHTML=DB.chats.map(function(c){return '<button class="chat-item '+(c.id===DB.active?'active':'')+'" data-chat="'+c.id+'"><svg class="ic"><use href="#i-chat"/></svg><span>'+esc(c.title)+'</span></button>'}).join('')||'<div class="empty" style="padding:14px">Hali suhbat yo\'q</div>';
 }
 function renderChat(){
  var c=ac();var w=$('#welcome'),m=$('#msgs');
  if(!c||!c.msgs.length){w.style.display='flex';m.style.display='none';var h=new Date().getHours();var g=h<12?'Xayrli tong':h<18?'Xayrli kun':'Xayrli kech';$('#greet').textContent=(DB.profile?g+', '+DB.profile.name+'! 👋':'Salom! 👋')}
  else{w.style.display='none';m.style.display='flex';m.innerHTML=c.msgs.map(msgHTML).join('');scrollB()}
- $('#modelName').textContent=MNAME[DB.settings.model]||'Bepul AI';
 }
 function msgHTML(m,i){var inner='';if(m.image)inner+='<img class="att" src="'+m.image+'">';if(m.text)inner+=esc(m.text);inner+='<span class="tm">'+fmt(m.time)+'</span>';var acts=m.role==='bot'?'<div class="acts"><button data-save="'+i+'"><svg class="ic"><use href="#i-bookmark"/></svg></button><button data-copy="'+i+'"><svg class="ic"><use href="#i-copy"/></svg></button><button data-say="'+i+'"><svg class="ic"><use href="#i-speaker"/></svg></button></div>':'';return '<div class="m '+m.role+'">'+acts+inner+'</div>'}
 function scrollB(){setTimeout(function(){var s=$('#scroll');if(s)s.scrollTop=s.scrollHeight},50)}
 
-function build(c,txt,img){var sys=SYS+(MODES[DB.settings.mode]||'');if(DB.profile&&DB.profile.name)sys+='\nFoydalanuvchi ismi: '+DB.profile.name+'. Shu ism bilan chaqir.';var a=[{role:'system',content:sys}];c.msgs.slice(-10).forEach(function(m){if(m.role==='user')a.push({role:'user',content:m.text||'[rasm]'});if(m.role==='bot')a.push({role:'assistant',content:m.text})});if(img)a.push({role:'user',content:[{type:'text',text:txt},{type:'image_url',image_url:{url:img}}]});else a.push({role:'user',content:txt});return a}
+/* ===== BUILD SYSTEM MSG ===== */
+function sysMsg(){return (CHARACTERS[DB.settings.character]||CHARACTERS.dost)+'\n'+(LANG[DB.settings.lang]||LANG.uz)+BASE_RULES}
+function build(c,txt,img){var a=[{role:'system',content:sysMsg()}];if(DB.profile&&DB.profile.name)a[0].content+='\nFoydalanuvchi ismi: '+DB.profile.name+'. Shu ism bilan chaqir.';c.msgs.slice(-10).forEach(function(m){if(m.role==='user')a.push({role:'user',content:m.text||'[rasm]'});if(m.role==='bot')a.push({role:'assistant',content:m.text})});if(img)a.push({role:'user',content:[{type:'text',text:txt},{type:'image_url',image_url:{url:img}}]});else a.push({role:'user',content:txt});return a}
 
-async function free(msgs){try{var r=await fetch('https://text.pollinations.ai/openai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:CONFIG.pollinationsModel,messages:msgs,private:true})});if(r.ok){var d=await r.json();var t=d&&d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content?d.choices[0].message.content.trim():null;if(t&&!/budget|api key|raise the key/i.test(t))return t}}catch(e){}try{var sy=msgs.find(function(m){return m.role==='system'});sy=sy?sy.content:'';var rs=msgs.filter(function(m){return m.role!=='system'}).map(function(m){return (m.role==='user'?'User: ':'Assistant: ')+(typeof m.content==='string'?m.content:'[image]')}).join('\n');var r2=await fetch('https://text.pollinations.ai/'+encodeURIComponent(sy+'\n\n'+rs)+'?model='+CONFIG.pollinationsModel+'&private=true');if(r2.ok)return (await r2.text()).trim()}catch(e){}return null}
-async function gem(msgs,key){try{var sy=msgs.find(function(m){return m.role==='system'});var co=[];msgs.filter(function(m){return m.role!=='system'}).forEach(function(m){var pa=[];if(typeof m.content==='string')pa.push({text:m.content});else m.content.forEach(function(p){if(p.type==='text')pa.push({text:p.text});else{var b=p.image_url.url.split(',')[1];var mi=p.image_url.url.split(';')[0].split(':')[1];pa.push({inline_data:{mime_type:mi,data:b}})}});co.push({role:m.role==='assistant'?'model':'user',parts:pa})});var r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+key,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({systemInstruction:{parts:[{text:sy.content}]},contents:co,generationConfig:{maxOutputTokens:2000}})});if(!r.ok)return null;var d=await r.json();return d&&d.candidates&&d.candidates[0]&&d.candidates[0].content?d.candidates[0].content.parts.map(function(p){return p.text||''}).join('').trim()||null:null}catch(e){return null}}
-async function groq(msgs,key){try{var r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify({model:'llama-3.3-70b-versatile',messages:msgs,max_tokens:1800})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
-async function openrouter(msgs,key){try{var r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','X-Title':"Do'ppi AI"},body:JSON.stringify({model:'meta-llama/llama-3.3-70b-instruct:free',messages:msgs,max_tokens:1500})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
-async function cerebras(msgs,key){try{var r=await fetch('https://api.cerebras.ai/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify({model:'llama-3.3-70b',messages:msgs,max_tokens:1500})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
-async function cloudflare(msgs,acc,tok){try{var r=await fetch('https://api.cloudflare.com/client/v4/accounts/'+acc+'/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast',{method:'POST',headers:{'Authorization':'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({messages:msgs})});if(!r.ok)return null;var d=await r.json();return d&&d.result&&d.result.response?d.result.response.trim()||null:null}catch(e){return null}}
-async function huggingface(msgs,key){try{var r=await fetch('https://router.huggingface.co/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify({model:'Qwen/Qwen2.5-72B-Instruct',messages:msgs,max_tokens:1500})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
-async function ask(msgs,img){var s=DB.settings,m=s.model;
- if(m==='gemini'&&s.gem){var r=await gem(msgs,s.gem);if(r)return r}
- if(m==='groq'&&s.groq&&!img){var r=await groq(msgs,s.groq);if(r)return r}
- if(m==='openrouter'&&s.or){var r=await openrouter(msgs,s.or);if(r)return r}
- if(m==='cerebras'&&s.cb){var r=await cerebras(msgs,s.cb);if(r)return r}
- if(m==='cloudflare'&&s.cfAcc&&s.cfTok){var r=await cloudflare(msgs,s.cfAcc,s.cfTok);if(r)return r}
- if(m==='huggingface'&&s.hf){var r=await huggingface(msgs,s.hf);if(r)return r}
- if(!img){
-  if(s.gem){var r=await gem(msgs,s.gem);if(r)return r}
-  if(s.groq){var r=await groq(msgs,s.groq);if(r)return r}
-  if(s.or){var r=await openrouter(msgs,s.or);if(r)return r}
-  if(s.cb){var r=await cerebras(msgs,s.cb);if(r)return r}
-  if(s.cfAcc&&s.cfTok){var r=await cloudflare(msgs,s.cfAcc,s.cfTok);if(r)return r}
-  if(s.hf){var r=await huggingface(msgs,s.hf);if(r)return r}
- }
- return await free(msgs);
-}
-async function genImg(p){
- var enh=p+', yuqori sifatli, detallar, professional, no watermark, clean composition';
- var u='https://image.pollinations.ai/prompt/'+encodeURIComponent(enh)+'?width=1024&height=1024&nologo=true&seed='+Math.floor(Math.random()*99999);
- return new Promise(function(res){var im=new Image();im.onload=function(){res(u)};im.onerror=function(){res(null)};im.src=u;setTimeout(function(){res(null)},30000)})
-}
+/* ===== 7 TA AI ZANJIRI (fallback) ===== */
+async function callGemini(msgs,key){try{var sy=msgs.find(function(m){return m.role==='system'});var co=[];msgs.filter(function(m){return m.role!=='system'}).forEach(function(m){var pa=[];if(typeof m.content==='string')pa.push({text:m.content});else m.content.forEach(function(p){if(p.type==='text')pa.push({text:p.text});else{var b=p.image_url.url.split(',')[1];var mi=p.image_url.url.split(';')[0].split(':')[1];pa.push({inline_data:{mime_type:mi,data:b}})}});co.push({role:m.role==='assistant'?'model':'user',parts:pa})});var r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+key,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({systemInstruction:{parts:[{text:sy.content}]},contents:co,generationConfig:{maxOutputTokens:2000}})});if(!r.ok)return null;var d=await r.json();return d&&d.candidates&&d.candidates[0]&&d.candidates[0].content?d.candidates[0].content.parts.map(function(p){return p.text||''}).join('').trim()||null:null}catch(e){return null}}
+async function callGroq(msgs,key){try{var r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify({model:'llama-3.3-70b-versatile',messages:msgs,max_tokens:1800})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
+async function callOR(msgs,key){try{var r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','X-Title':"Do'ppi AI"},body:JSON.stringify({model:'meta-llama/llama-3.3-70b-instruct:free',messages:msgs,max_tokens:1500})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
+async function callCB(msgs,key){try{var r=await fetch('https://api.cerebras.ai/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify({model:'llama-3.3-70b',messages:msgs,max_tokens:1500})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
+async function callCF(msgs,acc,tok){try{var r=await fetch('https://api.cloudflare.com/client/v4/accounts/'+acc+'/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast',{method:'POST',headers:{'Authorization':'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({messages:msgs})});if(!r.ok)return null;var d=await r.json();return d&&d.result&&d.result.response?d.result.response.trim()||null:null}catch(e){return null}}
+async function callHF(msgs,key){try{var r=await fetch('https://router.huggingface.co/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify({model:'Qwen/Qwen2.5-72B-Instruct',messages:msgs,max_tokens:1500})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
+async function callFree(msgs){try{var r=await fetch('https://text.pollinations.ai/openai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'openai',messages:msgs,private:true})});if(r.ok){var d=await r.json();var t=d&&d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content?d.choices[0].message.content.trim():null;if(t&&!/budget|api key|raise the key/i.test(t))return t}}catch(e){}try{var sy=msgs.find(function(m){return m.role==='system'});sy=sy?sy.content:'';var rs=msgs.filter(function(m){return m.role!=='system'}).map(function(m){return (m.role==='user'?'User: ':'Assistant: ')+(typeof m.content==='string'?m.content:'[image]')}).join('\n');var r2=await fetch('https://text.pollinations.ai/'+encodeURIComponent(sy+'\n\n'+rs)+'?model=openai&private=true');if(r2.ok)return (await r2.text()).trim()}catch(e){}return null}
 
+/* ASK: kalit borlarni ketma-ket sinaydi, oxirida free */
+async function ask(msgs,img){
+ var steps=[];
+ if(CONFIG.geminiKey)steps.push(['Gemini',function(){return callGemini(msgs,CONFIG.geminiKey)}]);
+ if(CONFIG.groqKey&&!img)steps.push(['Groq',function(){return callGroq(msgs,CONFIG.groqKey)}]);
+ if(CONFIG.openRouterKey)steps.push(['OpenRouter',function(){return callOR(msgs,CONFIG.openRouterKey)}]);
+ if(CONFIG.cerebrasKey)steps.push(['Cerebras',function(){return callCB(msgs,CONFIG.cerebrasKey)}]);
+ if(CONFIG.cfAccountId&&CONFIG.cfApiToken)steps.push(['Cloudflare',function(){return callCF(msgs,CONFIG.cfAccountId,CONFIG.cfApiToken)}]);
+ if(CONFIG.hfKey)steps.push(['HuggingFace',function(){return callHF(msgs,CONFIG.hfKey)}]);
+ for(var i=0;i<steps.length;i++){var res=null;try{res=await steps[i][1]()}catch(e){}if(res)return res}
+ return await callFree(msgs);
+}
+async function genImg(p){var enh=p+', yuqori sifatli, detallar, professional, no watermark, clean composition';var u='https://image.pollinations.ai/prompt/'+encodeURIComponent(enh)+'?width=1024&height=1024&nologo=true&seed='+Math.floor(Math.random()*99999);return new Promise(function(res){var im=new Image();im.onload=function(){res(u)};im.onerror=function(){res(null)};im.src=u;setTimeout(function(){res(null)},30000)})}
+
+/* ===== SEND ===== */
 var busy=false;
-async function send(txt,img){txt=(txt!=null?txt:$('#input').value).trim();if((!txt&&!img)||busy)return;busy=true;goPage('chat');var c=ensure();c.msgs.push({role:'user',text:txt||'Rasmda nima bor?',image:img,time:Date.now()});if(c.title==='Yangi suhbat'&&txt)c.title=txt.slice(0,30);$('#input').value='';autoR();sv();renderChat();renderSide();var tip=document.createElement('div');tip.className='m bot';tip.id='typ';tip.innerHTML='<div class="typing"><i></i><i></i><i></i></div>';$('#msgs').appendChild(tip);scrollB();var rep=null;try{if(img&&!DB.settings.gem&&!DB.settings.hf){rep="Rasmni taniy olishim uchun Gemini yoki HuggingFace kaliti kerak - Sozlamalardan yoki kod boshidagi CONFIG dan qo'shing. Rasm yaratish esa bepul ishlaydi!"}else{var ms=build(c,txt,img);rep=await ask(ms,img)||"Kechirasan, aloqa biroz qiyin. Birozdan keyin urinib ko'r."}}catch(e){rep='Xatolik: '+e.message}tip.remove();c.msgs.push({role:'bot',text:rep,time:Date.now()});sv();renderChat();if(DB.settings.tts)speak(rep);busy=false}
+async function send(txt,img){txt=(txt!=null?txt:$('#input').value).trim();if((!txt&&!img)||busy)return;busy=true;goPage('chat');var c=ensure();c.msgs.push({role:'user',text:txt||'Rasmda nima bor?',image:img,time:Date.now()});if(c.title==='Yangi suhbat'&&txt)c.title=txt.slice(0,30);$('#input').value='';autoR();sv();renderChat();renderSide();var tip=document.createElement('div');tip.className='m bot';tip.id='typ';tip.innerHTML='<div class="typing"><i></i><i></i><i></i></div>';$('#msgs').appendChild(tip);scrollB();var rep=null;try{var hasKey=CONFIG.geminiKey||CONFIG.groqKey||CONFIG.openRouterKey||CONFIG.cerebrasKey||(CONFIG.cfAccountId&&CONFIG.cfApiToken)||CONFIG.hfKey;if(img&&!hasKey){rep="Rasmni taniy olishim uchun Gemini/HuggingFace kaliti kerak - kod boshidagi CONFIG ga yozing. Rasm yaratish esa bepul ishlaydi!"}else{var ms=build(c,txt,img);rep=await ask(ms,img)||"Kechirasan, hozir barcha AI serverlari band 😅 Bir necha daqiqadan keyin urinib ko'r."}}catch(e){rep='Xatolik: '+e.message}tip.remove();c.msgs.push({role:'bot',text:rep,time:Date.now()});sv();renderChat();if(DB.settings.tts)speak(rep);busy=false}
 async function gen(p){goPage('chat');var c=ensure();c.msgs.push({role:'user',text:'Rasm yarat: '+p,time:Date.now()});if(c.title==='Yangi suhbat')c.title='Rasm: '+p.slice(0,24);sv();renderChat();renderSide();var tip=document.createElement('div');tip.className='m bot';tip.id='typ';tip.innerHTML='<div class="typing"><i></i><i></i><i></i></div>';$('#msgs').appendChild(tip);scrollB();var u=await genImg(p);tip.remove();if(u){c.msgs.push({role:'bot',text:'Mana, '+p.slice(0,36),image:u,time:Date.now()});DB.library.unshift({type:'image',url:u,prompt:p,time:Date.now()});var pv=$('#genPreview');if(pv)pv.innerHTML='<img src="'+u+'">'}else c.msgs.push({role:'bot',text:"Rasm yaratib bo'lmadi, boshqa so'z bilan urin.",time:Date.now()});sv();renderChat()}
 
-function speak(t){if(!('speechSynthesis' in window))return;var c=t.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu,'').trim();if(!c||c.length>600)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(c);u.lang='uz-UZ';u.rate=1;var v=speechSynthesis.getVoices();var x=v.find(function(a){return a.lang.startsWith('uz')})||v.find(function(a){return a.lang.startsWith('ru')})||v.find(function(a){return a.lang.startsWith('tr')});if(x)u.voice=x;speechSynthesis.speak(u)}
+/* ===== TTS/STT ===== */
+function speak(t){if(!('speechSynthesis' in window))return;var c=t.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu,'').trim();if(!c||c.length>600)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(c);u.lang={uz:'uz-UZ',ru:'ru-RU',en:'en-US',tr:'tr-TR'}[DB.settings.lang]||'uz-UZ';u.rate=1;var v=speechSynthesis.getVoices();var x=v.find(function(a){return a.lang.startsWith(u.lang.split('-')[0])});if(x)u.voice=x;speechSynthesis.speak(u)}
 var rec=null;
-function mic(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){banner("Chrome/Edge'da ishlaydi");return}if(rec){rec.stop();rec=null;var mb=$('[data-act=mic]');if(mb)mb.classList.remove('rec');return}rec=new SR();rec.lang='uz-UZ';rec.interimResults=true;rec.onresult=function(e){var t='';for(var i=e.resultIndex;i<e.results.length;i++)t+=e.results[i][0].transcript;$('#input').value=t;autoR()};rec.onend=function(){var mb=$('[data-act=mic]');if(mb)mb.classList.remove('rec');rec=null};rec.start();var mb2=$('[data-act=mic]');if(mb2)mb2.classList.add('rec')}
+function mic(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){banner("Chrome/Edge'da ishlaydi");return}if(rec){rec.stop();rec=null;var mb=$('[data-act=mic]');if(mb)mb.classList.remove('rec');return}rec=new SR();rec.lang={uz:'uz-UZ',ru:'ru-RU',en:'en-US',tr:'tr-TR'}[DB.settings.lang]||'uz-UZ';rec.interimResults=true;rec.onresult=function(e){var t='';for(var i=e.resultIndex;i<e.results.length;i++)t+=e.results[i][0].transcript;$('#input').value=t;autoR()};rec.onend=function(){var mb=$('[data-act=mic]');if(mb)mb.classList.remove('rec');rec=null};rec.start();var mb2=$('[data-act=mic]');if(mb2)mb2.classList.add('rec')}
 var callOn=false,callRec=null;
-function call(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){banner("Ovozli qo'ng'iroq Chrome/Edge'da");return}if(callOn){stopCall();return}callOn=true;var cb=$('[data-act=call]');if(cb)cb.classList.add('call');ensure();goPage('chat');callRec=new SR();callRec.lang='uz-UZ';callRec.continuous=true;callRec.interimResults=true;callRec.onresult=function(e){var f='',it='';for(var i=e.resultIndex;i<e.results.length;i++){if(e.results[i].isFinal)f+=e.results[i][0].transcript;else it+=e.results[i][0].transcript}if(f.trim()){callRec.stop();callHandle(f.trim())}};callRec.onerror=function(){if(callOn)setTimeout(callStart,600)};callRec.onend=function(){if(callOn)setTimeout(callStart,400)};callStart();banner("Qo'ng'iroq boshlandi - gapiring!")}
+function call(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){banner("Ovozli qo'ng'iroq Chrome/Edge'da");return}if(callOn){stopCall();return}callOn=true;var cb=$('[data-act=call]');if(cb)cb.classList.add('call');ensure();goPage('chat');callRec=new SR();callRec.lang={uz:'uz-UZ',ru:'ru-RU',en:'en-US',tr:'tr-TR'}[DB.settings.lang]||'uz-UZ';callRec.continuous=true;callRec.interimResults=true;callRec.onresult=function(e){var f='',it='';for(var i=e.resultIndex;i<e.results.length;i++){if(e.results[i].isFinal)f+=e.results[i][0].transcript;else it+=e.results[i][0].transcript}if(f.trim()){callRec.stop();callHandle(f.trim())}};callRec.onerror=function(){if(callOn)setTimeout(callStart,600)};callRec.onend=function(){if(callOn)setTimeout(callStart,400)};callStart();banner("Qo'ng'iroq boshlandi - gapiring!")}
 function callStart(){try{callRec.start()}catch(e){}}
 async function callHandle(t){var c=ensure();c.msgs.push({role:'user',text:t,time:Date.now()});if(c.title==='Yangi suhbat')c.title=t.slice(0,30);sv();renderChat();renderSide();var ms=build(c,t,null);var rep=await ask(ms,null)||"Kechir, eshitmay qoldim.";c.msgs.push({role:'bot',text:rep,time:Date.now()});sv();renderChat();speak(rep);if(callOn)callStart()}
 function stopCall(){callOn=false;var cb=$('[data-act=call]');if(cb)cb.classList.remove('call');if(callRec){try{callRec.stop()}catch(e){}callRec=null}if('speechSynthesis' in window)speechSynthesis.cancel()}
 
-function renderLib(){var l=$('#libList');if(!DB.library.length){l.innerHTML='<div class="empty"><svg class="ic"><use href="#i-lib"/></svg>Hali hech narsa saqlanmagan.<br>Xabar ustidagi bookmark belgisini bosing.</div>';return}l.innerHTML=DB.library.map(function(it,i){return it.type==='image'?'<div class="card lib-item"><img src="'+it.url+'"><div><div class="tx">'+esc(it.prompt)+'</div><div class="dt">'+new Date(it.time).toLocaleDateString('uz')+'</div></div><button class="del" data-del="'+i+'"><svg class="ic"><use href="#i-trash"/></svg></button></div>':'<div class="card lib-item"><div class="tx" style="flex:1">'+esc(it.text.slice(0,140))+'</div><button class="del" data-del="'+i+'"><svg class="ic"><use href="#i-trash"/></svg></button></div>'}).join('')}
-function setBadge(id,val){var e=$(id);if(e){e.textContent=val?'bor':'yo\'q';e.className='kbadge'+(val?'':' off')}}
-function renderSet(){$('#setName2').textContent=DB.profile?DB.profile.name:'Mehmon';$('#setUser').textContent=DB.profile&&DB.profile.username?'@'+DB.profile.username:(DB.profile?'Telegram foydalanuvchisi':'@mehmon');
- if(DB.profile&&DB.profile.avatar){$('#setAv').src=DB.profile.avatar}else{$('#setAv').src='logo.png'}
- $('#kGem').value=DB.settings.gem||'';$('#kGroq').value=DB.settings.groq||'';$('#kOr').value=DB.settings.or||'';$('#kCb').value=DB.settings.cb||'';$('#kCfAcc').value=DB.settings.cfAcc||'';$('#kCfTok').value=DB.settings.cfTok||'';$('#kHf').value=DB.settings.hf||'';
- setBadge('#kbGem',DB.settings.gem);setBadge('#kbGroq',DB.settings.groq);setBadge('#kbOr',DB.settings.or);setBadge('#kbCb',DB.settings.cb);setBadge('#kbCf',DB.settings.cfAcc);setBadge('#kbCf2',DB.settings.cfTok);setBadge('#kbHf',DB.settings.hf);
- $$('.tg').forEach(function(t){t.classList.toggle('on',!!DB.settings[t.dataset.tg])});refreshFoot()}
-function refreshFoot(){$('#footName').textContent=DB.profile?DB.profile.name:'Mehmon';if(DB.profile&&DB.profile.avatar){$('#footAv').src=DB.profile.avatar}else{$('#footAv').src='logo.png'}}
+/* ===== LIB / SET ===== */
+function renderLib(){var l=$('#libList');if(!DB.library.length){l.innerHTML='<div class="empty"><svg class="ic"><use href="#i-lib"/></svg>Hali hech narsa saqlanmagan.<br>Xabar ustidagi bookmark belgisini bosing.</div>';return}l.innerHTML=DB.library.map(function(it,i){return it.type==='image'?'<div class="card lib-item"><img src="'+it.url+'"><div class="tx">'+esc(it.prompt)+'</div><button class="del" data-del="'+i+'"><svg class="ic"><use href="#i-trash"/></svg></button></div>':'<div class="card lib-item"><div class="tx" style="flex:1">'+esc(it.text.slice(0,140))+'</div><button class="del" data-del="'+i+'"><svg class="ic"><use href="#i-trash"/></svg></button></div>'}).join('')}
+function renderSet(){$('#selLang').value=DB.settings.lang;$('#selChar').value=DB.settings.character;$$('.tg').forEach(function(t){t.classList.toggle('on',!!DB.settings[t.dataset.tg])});refreshFoot()}
+function refreshFoot(){$('#footName').textContent=DB.profile?DB.profile.name:'Mehmon'}
 
-function loadTgWidget(){if(window.TelegramLoginWidget&&window.TelegramLoginWidget.create)return;var s=document.createElement('script');s.async=true;s.src='https://telegram.org/js/telegram-widget.js?22';document.head.appendChild(s)}
-window.onTgAuth=function(u){if(!u)return;DB.profile={name:u.first_name+(u.last_name?' '+u.last_name:''),username:u.username||'',avatar:u.photo_url||'',tgId:u.id};DB.settings.logged=true;sv();refreshFoot();renderChat();renderSet();$('#loginModal').classList.remove('show');banner('Xush kelibsiz, '+DB.profile.name+'!');newChat()};
-function showLogin(){loadTgWidget();var box=$('#tgLoginBox');box.innerHTML='';var tries=0;var iv=setInterval(function(){tries++;if(window.TelegramLoginWidget&&window.TelegramLoginWidget.create){try{box.innerHTML='';window.TelegramLoginWidget.create({telegramLogin:CONFIG.botUsername,size:'large',userpic:true,requestAccess:'write',onAuth:window.onTgAuth,container:box})}catch(e){}clearInterval(iv)}if(tries>20){clearInterval(iv);box.innerHTML='<button class="btn p" data-act="tg-direct" style="width:100%"><svg class="ic"><use href="#i-user"/></svg> Telegram\'da ochish</button>'}},300)}
-
+/* ===== MODALS ===== */
 var askCb=null;
 function ask(title,ph,cb,prefill){$('#askTitle').textContent=title;$('#askText').placeholder=ph;$('#askText').value=prefill||'';askCb=cb;$('#askModal').classList.add('show');setTimeout(function(){$('#askText').focus()},150)}
 $('#askOk').onclick=function(){var v=$('#askText').value.trim();$('#askModal').classList.remove('show');if(v&&askCb)askCb(v)};
@@ -596,6 +595,7 @@ function autoR(){var el=$('#input');if(!el)return;el.style.height='auto';el.styl
 function posDD(dd,anchor){var r=anchor.getBoundingClientRect();dd.style.left=Math.max(8,Math.min(r.left,innerWidth-220))+'px';dd.style.top=(r.bottom+6)+'px';dd.classList.add('show')}
 function hideDDs(){$$('.dd').forEach(function(d){d.classList.remove('show')})}
 
+/* ===== CLICK DELEGATSIYA ===== */
 document.addEventListener('click',function(e){try{
  var t=e.target;hideDDs();
  var x=t.closest('[data-x]');if(x){$('#'+x.dataset.x).classList.remove('show');return}
@@ -606,68 +606,55 @@ document.addEventListener('click',function(e){try{
   if(n==='lib'){goPage('lib');return}
   if(n==='img'){goPage('img');return}
   if(n==='vid'){banner('AI videolar - tez orada!');return}
-  if(n==='code'){DB.settings.mode='code';sv();goPage('chat');ensure();renderChat();return}
-  if(n==='addfolder'){ask('Yangi papka','Papka nomi...',function(nm){DB.folders.push({id:uid(),name:nm});sv();renderSide()});return}
+  if(n==='code'){goPage('chat');ensure();banner('Kod so\'rang - Do\'ppi yozib beradi');return}
   if(n==='set'){goPage('set');return}
   if(n==='drawer'){openDrawer();return}
-  if(n==='bell'){$('#notModal').classList.add('show');return}
  }
- var fo=t.closest('[data-fold]');if(fo){var f=DB.folders.find(function(x){return x.id===fo.dataset.fold});$('#chatList').innerHTML=DB.chats.filter(function(c){return c.folder===f.id}).map(function(c){return '<button class="chat-item '+(c.id===DB.active?'active':'')+'" data-chat="'+c.id+'"><svg class="ic"><use href="#i-chat"/></svg><span>'+esc(c.title)+'</span></button>'}).join('')||'<div class="empty" style="padding:14px">Bo\'sh</div>';return}
  var ch=t.closest('[data-chat]');if(ch){openChat(ch.dataset.chat);return}
  var sg=t.closest('.sug');if(sg){$('#input').value=sg.dataset.q;autoR();send();return}
- var md=t.closest('.mode');if(md){DB.settings.mode=md.dataset.mode;sv();renderChat();return}
  var sv2=t.closest('[data-save]');if(sv2){var c=ac();if(c){var m=c.msgs[+sv2.dataset.save];DB.library.unshift({type:'text',text:m.text,time:Date.now()});sv();banner('Kutubxonaga saqlandi')}return}
  var cp=t.closest('[data-copy]');if(cp){var c2=ac();if(c2){try{navigator.clipboard.writeText(c2.msgs[+cp.dataset.copy].text||'')}catch(e){}banner('Nusxa olindi')}return}
  var sy=t.closest('[data-say]');if(sy){var c3=ac();if(c3)speak(c3.msgs[+sy.dataset.say].text||'');return}
  var dl=t.closest('[data-del]');if(dl){DB.library.splice(+dl.dataset.del,1);sv();renderLib();banner("O'chirildi");return}
  var a=t.closest('[data-act]');if(a){var act=a.dataset.act;
   if(act==='attach'){posDD($('#attachDD'),a);return}
-  if(act==='model'){posDD($('#modelDD'),a);return}
   if(act==='mic'){mic();return}
   if(act==='call'||act==='call2'){call();return}
   if(act==='photo'){var inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=function(){var f=inp.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){send('',rd.result)};rd.readAsDataURL(f)};inp.click();return}
   if(act==='gen2'){goPage('img');return}
   if(act==='gen'){var p=$('#genPrompt').value.trim();if(!p){banner('Tavsif yozing');return}gen(p);return}
-  if(act==='login'){showLogin();$('#loginModal').classList.add('show');return}
-  if(act==='guest'){DB.profile={name:'Mehmon',username:'',avatar:''};sv();refreshFoot();renderChat();renderSet();$('#loginModal').classList.remove('show');newChat();return}
-  if(act==='tg-direct'){window.open('https://t.me/'+CONFIG.botUsername,'_blank');return}
-  if(act==='save-keys'){DB.settings.gem=$('#kGem').value.trim();DB.settings.groq=$('#kGroq').value.trim();DB.settings.or=$('#kOr').value.trim();DB.settings.cb=$('#kCb').value.trim();DB.settings.cfAcc=$('#kCfAcc').value.trim();DB.settings.cfTok=$('#kCfTok').value.trim();DB.settings.hf=$('#kHf').value.trim();sv();renderSet();banner('✅ Kalitlar saqlandi');return}
+  if(act==='start'){var nm=$('#onName').value.trim();if(!nm){banner('Ismingizni yozing');return}DB.profile={name:nm};sv();refreshFoot();renderChat();$('#loginModal').classList.remove('show');newChat();banner('Xush kelibsiz, '+nm+'!');return}
+  if(act==='night-toggle'){DB.settings.night=!DB.settings.night;applyTheme();sv();if($('#p-set').classList.contains('on'))renderSet();return}
   if(act==='reset-chat'){if(confirm('Barcha suhbatlar o\'chirilsinmi?')){DB.chats=[];DB.active='';sv();newChat();renderSide();banner('Tozalandi')}return}
   if(act==='soon'){banner('Tez orada!');return}
  }
- var ms=t.closest('[data-m]');if(ms){var mm=ms.dataset.m;var s=DB.settings;
-  var need={gemini:'gem',groq:'groq',openrouter:'or',cerebras:'cb',cloudflare:'cfAcc',huggingface:'hf'};
-  if(need[mm]&&!s[need[mm]]){banner('Bu AI uchun kalit kerak - Sozlamalardan yoki kod boshidagi CONFIG dan qo\'shing');goPage('set');return}
-  if(mm==='cloudflare'&&!s.cfTok){banner('Cloudflare token ham kerak');goPage('set');return}
-  s.model=mm;sv();$$('#modelDD button').forEach(function(b){b.classList.toggle('sel',b.dataset.m===mm)});renderChat();return}
  var cm=t.closest('[data-c]');if(cm){var cc=ac();if(!cc)return;var ca=cm.dataset.c;
   if(ca==='rename')ask("Nomini o'zgartirish",'Yangi nom...',function(nm){cc.title=nm;sv();renderChat();renderSide()});
-  if(ca==='folder'){$('#foldList').innerHTML='<button class="nav-btn" data-fsel=""><svg class="ic"><use href="#i-x"/></svg> Papkasiz</button>'+DB.folders.map(function(f){return '<button class="nav-btn" data-fsel="'+f.id+'"><svg class="ic"><use href="#i-folder"/></svg> '+esc(f.name)+'</button>'}).join('');$('#foldList').onclick=function(ev){var b=ev.target.closest('[data-fsel]');if(!b)return;cc.folder=b.dataset.fsel;sv();renderSide();renderChat();$('#foldModal').classList.remove('show')};$('#foldModal').classList.add('show')}
   if(ca==='delete')if(confirm("Suhbat o'chirilsinmi?"))delChat(cc.id);
   return}
- var tg=t.closest('.tg');if(tg){var k=tg.dataset.tg;DB.settings[k]=!DB.settings[k];tg.classList.toggle('on',DB.settings[k]);sv();return}
+ var tg=t.closest('.tg');if(tg){var k=tg.dataset.tg;DB.settings[k]=!DB.settings[k];tg.classList.toggle('on',DB.settings[k]);if(k==='night')applyTheme();sv();return}
  if(t.closest('#sendBtn')){send();return}
 }catch(err){banner('Click xato: '+err.message)}});
 
 document.addEventListener('input',function(e){if(e.target.id==='input')autoR()});
 document.addEventListener('keydown',function(e){if(e.target.id==='input'&&e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});
+document.addEventListener('change',function(e){if(e.target.id==='selLang'){DB.settings.lang=e.target.value;sv();banner('Til o\'zgardi')}if(e.target.id==='selChar'){DB.settings.character=e.target.value;sv();banner('Xarakter o\'zgardi')}});
 
 function runSearch(q){q=q.toLowerCase();var res=DB.chats.filter(function(c){return !q||c.title.toLowerCase().includes(q)||c.msgs.some(function(m){return (m.text||'').toLowerCase().includes(q)})});$('#searchRes').innerHTML=res.map(function(c){return '<button class="chat-item" data-chat="'+c.id+'" style="margin-bottom:4px"><svg class="ic"><use href="#i-chat"/></svg><span>'+esc(c.title)+'</span></button>'}).join('')||'<div class="empty">Hech narsa topilmadi</div>'}
 document.addEventListener('input',function(e){if(e.target.id==='searchIn')runSearch(e.target.value)});
 
-$('#notReq').onclick=async function(){if(!('Notification' in window)){$('#notSt').textContent="Brauzeringiz qo'llab-quvvatlamaydi";return}var p=await Notification.requestPermission();DB.settings.notifAsked=true;sv();$('#notSt').textContent=p==='granted'?'Ruxsat berildi!':'Ruxsat berilmadi';if(p==='granted')new Notification("Do'ppi AI",{body:'Bildirishnomalar yoqildi!',icon:'logo.png'})};
+$('#notReq').onclick=async function(){if(!('Notification' in window)){$('#notSt').textContent="Brauzeringiz qo'llab-quvvatlamaydi";return}var p=await Notification.requestPermission();$('#notSt').textContent=p==='granted'?'Ruxsat berildi!':'Ruxsat berilmadi';if(p==='granted')new Notification("Do'ppi AI",{body:'Bildirishnomalar yoqildi!',icon:CONFIG.logoPath})};
 
-async function daily(){if(!DB.settings.daily)return;var td=new Date().toDateString(),h=new Date().getHours();if(S.raw('dp_daily','')===td||h<8||h>22)return;S.set('dp_daily',td);if('Notification' in window&&Notification.permission==='granted')new Notification("Do'ppi AI",{body:"Yangi kun - yangi g'alaba!",icon:'logo.png'});var c=ac();if(c&&c.msgs.length){var r=await free([{role:'system',content:"2 gaplik iliq o'zbekcha motivatsiya. Ism: "+(DB.profile?DB.profile.name:'oshna')+'. Markdownsiz.'},{role:'user',content:'Yangi kun motivatsiyasi'}]);if(r){c.msgs.push({role:'sys',text:r,time:Date.now()});sv();renderChat()}}}
+/* PWA manifest */
+try{var mf={name:"Do'ppi AI",short_name:"Do'ppi",start_url:".",display:"standalone",background_color:"#ece0f8",theme_color:"#8f6fe8",lang:"uz",icons:[{src:CONFIG.logoPath,sizes:"192x192",type:"image/png"},{src:CONFIG.logoPath,sizes:"512x512",type:"image/png"}]};var mb=new Blob([JSON.stringify(mf)],{type:'application/manifest+json'});var ml=document.createElement('link');ml.rel='manifest';ml.href=URL.createObjectURL(mb);document.head.appendChild(ml)}catch(e){}
 
-try{var mf={name:"Do'ppi AI",short_name:"Do'ppi",start_url:".",display:"standalone",background_color:"#ece0f8",theme_color:"#8f6fe8",lang:"uz",icons:[{src:"logo.png",sizes:"192x192",type:"image/png"},{src:"logo.png",sizes:"512x512",type:"image/png"}]};var mb=new Blob([JSON.stringify(mf)],{type:'application/manifest+json'});var ml=document.createElement('link');ml.rel='manifest';ml.href=URL.createObjectURL(mb);document.head.appendChild(ml)}catch(e){}
-
+/* BOOT */
 window.addEventListener('load',function(){try{
- loadLogos();
+ applyTheme();
  if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=function(){};
  DB.active='';newChat();autoR();renderChat();renderSide();renderSet();
- if(!DB.profile||!DB.settings.logged){setTimeout(function(){showLogin();$('#loginModal').classList.add('show')},1600)}
- else{setTimeout(function(){if('Notification' in window&&Notification.permission==='default')$('#notModal').classList.add('show')},4500)}
- daily();setInterval(daily,60000);
+ if(!DB.profile)setTimeout(function(){$('#loginModal').classList.add('show')},1600);
+ else setTimeout(function(){if('Notification' in window&&Notification.permission==='default')$('#notModal').classList.add('show')},4500);
 }catch(e){banner('Boot xato: '+e.message)}});
 </script>
 </body>
