@@ -196,7 +196,6 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 .banner.show{transform:translateX(-50%) translateY(0)}
 .banner.err{background:rgba(255,90,110,.95);color:#fff;border-color:transparent}
 
-/* ===== SCRIM: HECH QANDAY BLUR YO'Q, FAQAT YUMSHOQ SHAFFOF ===== */
 .scrim{position:fixed;inset:0;z-index:140;background:rgba(20,15,40,.18);display:none;transition:opacity .2s}
 .scrim.show{display:block}
 
@@ -253,12 +252,12 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 <symbol id="i-new" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
 </defs></svg>
 
-<div id="splash"><img class="sl lg" alt="" width="74" height="74"><div class="sn">Do'ppi AI</div><div class="sd"><i></i><i></i><i></i></div></div>
+<div id="splash"><img class="sl lg" src="logo.png" alt="" width="74" height="74"><div class="sn">Do'ppi AI</div><div class="sd"><i></i><i></i><i></i></div></div>
 <div class="scrim" id="scrim"></div>
 
 <div class="shell">
  <aside class="side glass" id="side">
-  <div class="brand"><img class="lg" alt="" width="34" height="34"><b>Do'ppi AI</b></div>
+  <div class="brand"><img class="lg" src="logo.png" alt="" width="34" height="34"><b>Do'ppi AI</b></div>
   <button class="nav-btn new-chat" data-nav="new"><svg class="ic"><use href="#i-chat"/></svg> Yangi suhbat</button>
   <button class="nav-btn" data-nav="search"><svg class="ic"><use href="#i-search"/></svg> Qidirish</button>
   <button class="nav-btn" data-nav="lib"><svg class="ic"><use href="#i-lib"/></svg> Kutubxona</button>
@@ -270,7 +269,7 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
   <div class="sec">Suhbatlar</div>
   <div class="chats-scroll" id="chatList"></div>
   <div class="side-foot">
-   <img class="lg" id="footAv" alt="" width="32" height="32">
+   <img class="lg" id="footAv" src="logo.png" alt="" width="32" height="32">
    <div class="nm" id="footName">Mehmon</div>
    <button class="gear" data-nav="set"><svg class="ic"><use href="#i-gear"/></svg></button>
   </div>
@@ -279,7 +278,7 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
  <main class="glass main-glass">
   <div class="topbar">
    <button class="burger" data-nav="drawer"><svg class="ic"><use href="#i-menu"/></svg></button>
-   <img class="lg" alt="" width="30" height="30">
+   <img class="lg" src="logo.png" alt="" width="30" height="30">
    <b>Do'ppi AI</b>
    <button class="burger" data-nav="bell" style="box-shadow:none;background:transparent"><svg class="ic"><use href="#i-bell"/></svg></button>
   </div>
@@ -346,19 +345,19 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
      <p class="sub">Profil va 7 ta AI kalitlari.</p>
      <div class="card">
       <div class="prof-head">
-       <img class="lg" id="setAv" alt="" width="64" height="64">
+       <img class="lg" id="setAv" src="logo.png" alt="" width="64" height="64">
        <div><div class="pn" id="setName2">Mehmon</div><div class="pu" id="setUser">@mehmon</div></div>
       </div>
       <button class="btn g full" data-act="login"><svg class="ic"><use href="#i-user"/></svg> Telegram bilan kirish</button>
      </div>
      <div class="card">
-      <div class="field"><label>Gemini API kalit <span class="kbadge off" id="kbGem">yo'q</span></label><input type="password" id="kGem" placeholder="AIza..."></div>
-      <div class="field"><label>Groq API kalit <span class="kbadge off" id="kbGroq">yo'q</span></label><input type="password" id="kGroq" placeholder="gsk_..."></div>
-      <div class="field"><label>OpenRouter API kalit <span class="kbadge off" id="kbOr">yo'q</span></label><input type="password" id="kOr" placeholder="sk-or-..."></div>
-      <div class="field"><label>Cerebras API kalit <span class="kbadge off" id="kbCb">yo'q</span></label><input type="password" id="kCb" placeholder="cere_..."></div>
-      <div class="field"><label>Cloudflare Account ID <span class="kbadge off" id="kbCf">yo'q</span></label><input type="text" id="kCfAcc" placeholder="account id..."></div>
-      <div class="field"><label>Cloudflare API token <span class="kbadge off" id="kbCf2">yo'q</span></label><input type="password" id="kCfTok" placeholder="cf tok..."></div>
-      <div class="field"><label>HuggingFace API kalit <span class="kbadge off" id="kbHf">yo'q</span></label><input type="password" id="kHf" placeholder="hf_..."></div>
+      <div class="field"><label>Gemini API kalit <span class="kbadge off" id="kbGem">yo'q</span></label><input type="password" id="kGem" placeholder="AQ.Ab8RN6KQaHrmaa62sDyoJOy6oczPXsVX69i_Oc5-pnS7fzbTBw"></div>
+      <div class="field"><label>Groq API kalit <span class="kbadge off" id="kbGroq">yo'q</span></label><input type="password" id="kGroq" placeholder="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"></div>
+      <div class="field"><label>OpenRouter API kalit <span class="kbadge off" id="kbOr">yo'q</span></label><input type="password" id="kOr" placeholder="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"></div>
+      <div class="field"><label>Cerebras API kalit <span class="kbadge off" id="kbCb">yo'q</span></label><input type="password" id="kCb" placeholder="csk-5jnvdhffh86r5y62xm4c2fcyrym8k9kew98mh89k3kfwvhcn"></div>
+      <div class="field"><label>Cloudflare Account ID <span class="kbadge off" id="kbCf">yo'q</span></label><input type="text" id="kCfAcc" placeholder="5b593fe4d713849d1965c23333835a9f"></div>
+      <div class="field"><label>Cloudflare API token <span class="kbadge off" id="kbCf2">yo'q</span></label><input type="password" id="kCfTok" placeholder="cfat_N6EsTI0fjfE9d8iTUBEWLjzhgoHHJvCBbEBfB9ALaf57ad70"></div>
+      <div class="field"><label>HuggingFace API kalit <span class="kbadge off" id="kbHf">yo'q</span></label><input type="password" id="kHf" placeholder="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"></div>
       <button class="btn p full" data-act="save-keys"><svg class="ic"><use href="#i-check"/></svg> Kalitlarni saqlash</button>
       <p style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center">Kalitsiz ham ishlayveradi (Pollinations). Kalit qo'shsangiz — kuchliroq va tezroq.</p>
      </div>
@@ -440,16 +439,50 @@ main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative
 <div class="banner" id="banner"></div>
 
 <script>
+/* ═══════════════════════════════════════════════════════════ */
+/* ══  >>> SHU YERGA O'ZINGIZNING 7 TA API KALITINGIZNI <<<   */
+/* ══  >>>             YOZIB QO'YING                        <<<   */
+/* ═══════════════════════════════════════════════════════════ */
+const CONFIG = {
+  // Bot username (Telegram login uchun)
+  botUsername: 'duppi_ai_bot',
+
+  // ── 1. GEMINI (Google) ──────────────────────────────────────
+  geminiKey: '',        // ← "AIzaSy..." ni bu yerga yozing
+
+  // ── 2. GROQ (tez AI) ────────────────────────────────────────
+  groqKey: '',          // ← "gsk_..." ni bu yerga yozing
+
+  // ── 3. OPENROUTER ───────────────────────────────────────────
+  openRouterKey: '',    // ← "sk-or-..." ni bu yerga yozing
+
+  // ── 4. CEREBRAS ─────────────────────────────────────────────
+  cerebrasKey: '',      // ← "cere_..." ni bu yerga yozing
+
+  // ── 5. CLOUDFLARE Workers AI ────────────────────────────────
+  cfAccountId: '',      // ← account ID ni bu yerga yozing
+  cfApiToken: '',       // ← API token ni bu yerga yozing
+
+  // ── 6. HUGGINGFACE ──────────────────────────────────────────
+  hfKey: '',            // ← "hf_..." ni bu yerga yozing
+
+  // ── 7. POLLINATIONS (bepul, kalitsiz ishlaydi) ──────────────
+  pollinationsModel: 'openai'   // model nomi
+};
+/* ═══════════════════════════════════════════════════════════ */
+/* ══  Yuqoridagi bo'sh joylarga kalitlaringizni yozsangiz,   */
+/* ══  sayt avtomatik o'sha AI lardan foydalanadi.             */
+/* ═══════════════════════════════════════════════════════════ */
+
+
 window.onerror=function(m,s,l){try{var b=document.getElementById('banner');if(b){b.className='banner err show';b.textContent='Xato ('+l+'): '+m;setTimeout(function(){b.classList.remove('show')},8000)}}catch(e){}return false};
 
 var mem={};
 var S={get:function(k,d){try{var v=localStorage.getItem(k);return v==null?(k in mem?mem[k]:d):JSON.parse(v)}catch(e){return k in mem?mem[k]:d}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){mem[k]=v}},del:function(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}},raw:function(k,d){try{var v=localStorage.getItem(k);return v==null?(k in mem?mem[k]:d):v}catch(e){return k in mem?mem[k]:d}}};
 
-var LL=['logo.png','Logo.png','LOGO.png','logo.jpg','assets/logo.png','Logo.PNG'];
-function loadLogo(el){if(!el)return;var i=0;(function n(){if(i>=LL.length){el.removeAttribute('src');el.style.background='conic-gradient(from 200deg,#f0a6d8,#b9a6f5,#a6d4f5,#a6f5e0,#f5e3a6,#f0a6d8)';return}var u=LL[i++];var p=new Image();p.onload=function(){el.style.background='';el.src=u};p.onerror=n;p.src=u})()}
-function allLogos(){try{document.querySelectorAll('img.lg').forEach(loadLogo)}catch(e){}}
+/* LOGO: aynan logo.png dan foydalanadi (gradient fallback YO'Q) */
+function loadLogos(){document.querySelectorAll('img.lg').forEach(function(el){if(!el.src||el.src.endsWith('/logo.png'))el.src='logo.png'})}
 
-var BOT_USER='duppi_ai_bot';
 var SYS="Sen Do'ppi AI san - o'zbekcha gaplashadigan samimiy do'st va aqlli yordamchi.\n"+
 "KIMLIGING: O'zbek yoshlari uchun yaratilgan sun'iy intellektli do'st. Asosching: Bahodir Jo'rayev (@Jbahodri).\n"+
 "'Kimsan' deb so'rashsa: 'Men Do'ppi AI man - o'zbek yoshlarining raqamli do'sti, Bahodir Jo'rayev yaratgan' deb qisqa, iliq javob ber.\n"+
@@ -462,6 +495,11 @@ var MODES={sat:"\nSAT TUTOR: misolni bosqichma-bosqich yech, har qadamni tushunt
 var MNAME={free:"Bepul AI",gemini:"Gemini",groq:"Groq",openrouter:"OpenRouter",cerebras:"Cerebras",cloudflare:"Cloudflare",huggingface:"HuggingFace"};
 
 var DB={chats:S.get('dp_chats',[]),folders:S.get('dp_fold',[]),library:S.get('dp_lib',[]),profile:S.get('dp_prof',null),settings:Object.assign({tts:true,daily:true,model:'free',mode:'chat',logged:false,gem:'',groq:'',or:'',cb:'',cfAcc:'',cfTok:'',hf:''},S.get('dp_set',{})),active:''};
+
+/* CONFIG dan kalitlarni yuklash (agar Sozlamalarda bo'sh bo'lsa) */
+function initKeysFromConfig(){var s=DB.settings;if(!s.gem&&CONFIG.geminiKey)s.gem=CONFIG.geminiKey;if(!s.groq&&CONFIG.groqKey)s.groq=CONFIG.groqKey;if(!s.or&&CONFIG.openRouterKey)s.or=CONFIG.openRouterKey;if(!s.cb&&CONFIG.cerebrasKey)s.cb=CONFIG.cerebrasKey;if(!s.cfAcc&&CONFIG.cfAccountId)s.cfAcc=CONFIG.cfAccountId;if(!s.cfTok&&CONFIG.cfApiToken)s.cfTok=CONFIG.cfApiToken;if(!s.hf&&CONFIG.hfKey)s.hf=CONFIG.hfKey}
+initKeysFromConfig();
+
 function sv(){S.set('dp_chats',DB.chats);S.set('dp_fold',DB.folders);S.set('dp_lib',DB.library);if(DB.profile)S.set('dp_prof',DB.profile);S.set('dp_set',DB.settings)}
 var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
 var uid=function(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)};
@@ -487,7 +525,6 @@ function renderChat(){
  var c=ac();var w=$('#welcome'),m=$('#msgs');
  if(!c||!c.msgs.length){w.style.display='flex';m.style.display='none';var h=new Date().getHours();var g=h<12?'Xayrli tong':h<18?'Xayrli kun':'Xayrli kech';$('#greet').textContent=(DB.profile?g+', '+DB.profile.name+'! 👋':'Salom! 👋')}
  else{w.style.display='none';m.style.display='flex';m.innerHTML=c.msgs.map(msgHTML).join('');scrollB()}
- $$('.mode').forEach(function(b){b.classList.toggle('on',b.dataset.mode===DB.settings.mode)});
  $('#modelName').textContent=MNAME[DB.settings.model]||'Bepul AI';
 }
 function msgHTML(m,i){var inner='';if(m.image)inner+='<img class="att" src="'+m.image+'">';if(m.text)inner+=esc(m.text);inner+='<span class="tm">'+fmt(m.time)+'</span>';var acts=m.role==='bot'?'<div class="acts"><button data-save="'+i+'"><svg class="ic"><use href="#i-bookmark"/></svg></button><button data-copy="'+i+'"><svg class="ic"><use href="#i-copy"/></svg></button><button data-say="'+i+'"><svg class="ic"><use href="#i-speaker"/></svg></button></div>':'';return '<div class="m '+m.role+'">'+acts+inner+'</div>'}
@@ -495,7 +532,7 @@ function scrollB(){setTimeout(function(){var s=$('#scroll');if(s)s.scrollTop=s.s
 
 function build(c,txt,img){var sys=SYS+(MODES[DB.settings.mode]||'');if(DB.profile&&DB.profile.name)sys+='\nFoydalanuvchi ismi: '+DB.profile.name+'. Shu ism bilan chaqir.';var a=[{role:'system',content:sys}];c.msgs.slice(-10).forEach(function(m){if(m.role==='user')a.push({role:'user',content:m.text||'[rasm]'});if(m.role==='bot')a.push({role:'assistant',content:m.text})});if(img)a.push({role:'user',content:[{type:'text',text:txt},{type:'image_url',image_url:{url:img}}]});else a.push({role:'user',content:txt});return a}
 
-async function free(msgs){try{var r=await fetch('https://text.pollinations.ai/openai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'openai',messages:msgs,private:true})});if(r.ok){var d=await r.json();var t=d&&d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content?d.choices[0].message.content.trim():null;if(t&&!/budget|api key|raise the key/i.test(t))return t}}catch(e){}try{var sy=msgs.find(function(m){return m.role==='system'});sy=sy?sy.content:'';var rs=msgs.filter(function(m){return m.role!=='system'}).map(function(m){return (m.role==='user'?'User: ':'Assistant: ')+(typeof m.content==='string'?m.content:'[image]')}).join('\n');var r2=await fetch('https://text.pollinations.ai/'+encodeURIComponent(sy+'\n\n'+rs)+'?model=openai&private=true');if(r2.ok)return (await r2.text()).trim()}catch(e){}return null}
+async function free(msgs){try{var r=await fetch('https://text.pollinations.ai/openai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:CONFIG.pollinationsModel,messages:msgs,private:true})});if(r.ok){var d=await r.json();var t=d&&d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content?d.choices[0].message.content.trim():null;if(t&&!/budget|api key|raise the key/i.test(t))return t}}catch(e){}try{var sy=msgs.find(function(m){return m.role==='system'});sy=sy?sy.content:'';var rs=msgs.filter(function(m){return m.role!=='system'}).map(function(m){return (m.role==='user'?'User: ':'Assistant: ')+(typeof m.content==='string'?m.content:'[image]')}).join('\n');var r2=await fetch('https://text.pollinations.ai/'+encodeURIComponent(sy+'\n\n'+rs)+'?model='+CONFIG.pollinationsModel+'&private=true');if(r2.ok)return (await r2.text()).trim()}catch(e){}return null}
 async function gem(msgs,key){try{var sy=msgs.find(function(m){return m.role==='system'});var co=[];msgs.filter(function(m){return m.role!=='system'}).forEach(function(m){var pa=[];if(typeof m.content==='string')pa.push({text:m.content});else m.content.forEach(function(p){if(p.type==='text')pa.push({text:p.text});else{var b=p.image_url.url.split(',')[1];var mi=p.image_url.url.split(';')[0].split(':')[1];pa.push({inline_data:{mime_type:mi,data:b}})}});co.push({role:m.role==='assistant'?'model':'user',parts:pa})});var r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+key,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({systemInstruction:{parts:[{text:sy.content}]},contents:co,generationConfig:{maxOutputTokens:2000}})});if(!r.ok)return null;var d=await r.json();return d&&d.candidates&&d.candidates[0]&&d.candidates[0].content?d.candidates[0].content.parts.map(function(p){return p.text||''}).join('').trim()||null:null}catch(e){return null}}
 async function groq(msgs,key){try{var r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify({model:'llama-3.3-70b-versatile',messages:msgs,max_tokens:1800})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
 async function openrouter(msgs,key){try{var r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','X-Title':"Do'ppi AI"},body:JSON.stringify({model:'meta-llama/llama-3.3-70b-instruct:free',messages:msgs,max_tokens:1500})});if(!r.ok)return null;var d=await r.json();return d&&d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content.trim()||null:null}catch(e){return null}}
@@ -526,7 +563,7 @@ async function genImg(p){
 }
 
 var busy=false;
-async function send(txt,img){txt=(txt!=null?txt:$('#input').value).trim();if((!txt&&!img)||busy)return;busy=true;goPage('chat');var c=ensure();c.msgs.push({role:'user',text:txt||'Rasmda nima bor?',image:img,time:Date.now()});if(c.title==='Yangi suhbat'&&txt)c.title=txt.slice(0,30);$('#input').value='';autoR();sv();renderChat();renderSide();var tip=document.createElement('div');tip.className='m bot';tip.id='typ';tip.innerHTML='<div class="typing"><i></i><i></i><i></i></div>';$('#msgs').appendChild(tip);scrollB();var rep=null;try{if(img&&!DB.settings.gem&&!DB.settings.hf){rep="Rasmni taniy olishim uchun Gemini yoki HuggingFace kaliti kerak - Sozlamalardan qo'shing. Rasm yaratish esa bepul ishlaydi!"}else{var ms=build(c,txt,img);rep=await ask(ms,img)||"Kechirasan, aloqa biroz qiyin. Birozdan keyin urinib ko'r."}}catch(e){rep='Xatolik: '+e.message}tip.remove();c.msgs.push({role:'bot',text:rep,time:Date.now()});sv();renderChat();if(DB.settings.tts)speak(rep);busy=false}
+async function send(txt,img){txt=(txt!=null?txt:$('#input').value).trim();if((!txt&&!img)||busy)return;busy=true;goPage('chat');var c=ensure();c.msgs.push({role:'user',text:txt||'Rasmda nima bor?',image:img,time:Date.now()});if(c.title==='Yangi suhbat'&&txt)c.title=txt.slice(0,30);$('#input').value='';autoR();sv();renderChat();renderSide();var tip=document.createElement('div');tip.className='m bot';tip.id='typ';tip.innerHTML='<div class="typing"><i></i><i></i><i></i></div>';$('#msgs').appendChild(tip);scrollB();var rep=null;try{if(img&&!DB.settings.gem&&!DB.settings.hf){rep="Rasmni taniy olishim uchun Gemini yoki HuggingFace kaliti kerak - Sozlamalardan yoki kod boshidagi CONFIG dan qo'shing. Rasm yaratish esa bepul ishlaydi!"}else{var ms=build(c,txt,img);rep=await ask(ms,img)||"Kechirasan, aloqa biroz qiyin. Birozdan keyin urinib ko'r."}}catch(e){rep='Xatolik: '+e.message}tip.remove();c.msgs.push({role:'bot',text:rep,time:Date.now()});sv();renderChat();if(DB.settings.tts)speak(rep);busy=false}
 async function gen(p){goPage('chat');var c=ensure();c.msgs.push({role:'user',text:'Rasm yarat: '+p,time:Date.now()});if(c.title==='Yangi suhbat')c.title='Rasm: '+p.slice(0,24);sv();renderChat();renderSide();var tip=document.createElement('div');tip.className='m bot';tip.id='typ';tip.innerHTML='<div class="typing"><i></i><i></i><i></i></div>';$('#msgs').appendChild(tip);scrollB();var u=await genImg(p);tip.remove();if(u){c.msgs.push({role:'bot',text:'Mana, '+p.slice(0,36),image:u,time:Date.now()});DB.library.unshift({type:'image',url:u,prompt:p,time:Date.now()});var pv=$('#genPreview');if(pv)pv.innerHTML='<img src="'+u+'">'}else c.msgs.push({role:'bot',text:"Rasm yaratib bo'lmadi, boshqa so'z bilan urin.",time:Date.now()});sv();renderChat()}
 
 function speak(t){if(!('speechSynthesis' in window))return;var c=t.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu,'').trim();if(!c||c.length>600)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(c);u.lang='uz-UZ';u.rate=1;var v=speechSynthesis.getVoices();var x=v.find(function(a){return a.lang.startsWith('uz')})||v.find(function(a){return a.lang.startsWith('ru')})||v.find(function(a){return a.lang.startsWith('tr')});if(x)u.voice=x;speechSynthesis.speak(u)}
@@ -540,15 +577,16 @@ function stopCall(){callOn=false;var cb=$('[data-act=call]');if(cb)cb.classList.
 
 function renderLib(){var l=$('#libList');if(!DB.library.length){l.innerHTML='<div class="empty"><svg class="ic"><use href="#i-lib"/></svg>Hali hech narsa saqlanmagan.<br>Xabar ustidagi bookmark belgisini bosing.</div>';return}l.innerHTML=DB.library.map(function(it,i){return it.type==='image'?'<div class="card lib-item"><img src="'+it.url+'"><div><div class="tx">'+esc(it.prompt)+'</div><div class="dt">'+new Date(it.time).toLocaleDateString('uz')+'</div></div><button class="del" data-del="'+i+'"><svg class="ic"><use href="#i-trash"/></svg></button></div>':'<div class="card lib-item"><div class="tx" style="flex:1">'+esc(it.text.slice(0,140))+'</div><button class="del" data-del="'+i+'"><svg class="ic"><use href="#i-trash"/></svg></button></div>'}).join('')}
 function setBadge(id,val){var e=$(id);if(e){e.textContent=val?'bor':'yo\'q';e.className='kbadge'+(val?'':' off')}}
-function renderSet(){$('#setName2').textContent=DB.profile?DB.profile.name:'Mehmon';$('#setUser').textContent=DB.profile&&DB.profile.username?'@'+DB.profile.username:(DB.profile?'Telegram foydalanuvchisi':'@mehmon');if(DB.profile&&DB.profile.avatar){$('#setAv').src=DB.profile.avatar;$('#setAv').style.background=''}else allLogos();
+function renderSet(){$('#setName2').textContent=DB.profile?DB.profile.name:'Mehmon';$('#setUser').textContent=DB.profile&&DB.profile.username?'@'+DB.profile.username:(DB.profile?'Telegram foydalanuvchisi':'@mehmon');
+ if(DB.profile&&DB.profile.avatar){$('#setAv').src=DB.profile.avatar}else{$('#setAv').src='logo.png'}
  $('#kGem').value=DB.settings.gem||'';$('#kGroq').value=DB.settings.groq||'';$('#kOr').value=DB.settings.or||'';$('#kCb').value=DB.settings.cb||'';$('#kCfAcc').value=DB.settings.cfAcc||'';$('#kCfTok').value=DB.settings.cfTok||'';$('#kHf').value=DB.settings.hf||'';
  setBadge('#kbGem',DB.settings.gem);setBadge('#kbGroq',DB.settings.groq);setBadge('#kbOr',DB.settings.or);setBadge('#kbCb',DB.settings.cb);setBadge('#kbCf',DB.settings.cfAcc);setBadge('#kbCf2',DB.settings.cfTok);setBadge('#kbHf',DB.settings.hf);
  $$('.tg').forEach(function(t){t.classList.toggle('on',!!DB.settings[t.dataset.tg])});refreshFoot()}
-function refreshFoot(){$('#footName').textContent=DB.profile?DB.profile.name:'Mehmon';if(DB.profile&&DB.profile.avatar){$('#footAv').src=DB.profile.avatar;$('#footAv').style.background=''}}
+function refreshFoot(){$('#footName').textContent=DB.profile?DB.profile.name:'Mehmon';if(DB.profile&&DB.profile.avatar){$('#footAv').src=DB.profile.avatar}else{$('#footAv').src='logo.png'}}
 
 function loadTgWidget(){if(window.TelegramLoginWidget&&window.TelegramLoginWidget.create)return;var s=document.createElement('script');s.async=true;s.src='https://telegram.org/js/telegram-widget.js?22';document.head.appendChild(s)}
-window.onTgAuth=function(u){if(!u)return;DB.profile={name:u.first_name+(u.last_name?' '+u.last_name:''),username:u.username||'',avatar:u.photo_url||'',tgId:u.id};DB.settings.logged=true;sv();allLogos();refreshFoot();renderChat();renderSet();$('#loginModal').classList.remove('show');banner('Xush kelibsiz, '+DB.profile.name+'!');newChat()};
-function showLogin(){loadTgWidget();var box=$('#tgLoginBox');box.innerHTML='';var tries=0;var iv=setInterval(function(){tries++;if(window.TelegramLoginWidget&&window.TelegramLoginWidget.create){try{box.innerHTML='';window.TelegramLoginWidget.create({telegramLogin:BOT_USER,size:'large',userpic:true,requestAccess:'write',onAuth:window.onTgAuth,container:box})}catch(e){}clearInterval(iv)}if(tries>20){clearInterval(iv);box.innerHTML='<button class="btn p" data-act="tg-direct" style="width:100%"><svg class="ic"><use href="#i-user"/></svg> Telegram\'da ochish</button>'}},300)}
+window.onTgAuth=function(u){if(!u)return;DB.profile={name:u.first_name+(u.last_name?' '+u.last_name:''),username:u.username||'',avatar:u.photo_url||'',tgId:u.id};DB.settings.logged=true;sv();refreshFoot();renderChat();renderSet();$('#loginModal').classList.remove('show');banner('Xush kelibsiz, '+DB.profile.name+'!');newChat()};
+function showLogin(){loadTgWidget();var box=$('#tgLoginBox');box.innerHTML='';var tries=0;var iv=setInterval(function(){tries++;if(window.TelegramLoginWidget&&window.TelegramLoginWidget.create){try{box.innerHTML='';window.TelegramLoginWidget.create({telegramLogin:CONFIG.botUsername,size:'large',userpic:true,requestAccess:'write',onAuth:window.onTgAuth,container:box})}catch(e){}clearInterval(iv)}if(tries>20){clearInterval(iv);box.innerHTML='<button class="btn p" data-act="tg-direct" style="width:100%"><svg class="ic"><use href="#i-user"/></svg> Telegram\'da ochish</button>'}},300)}
 
 var askCb=null;
 function ask(title,ph,cb,prefill){$('#askTitle').textContent=title;$('#askText').placeholder=ph;$('#askText').value=prefill||'';askCb=cb;$('#askModal').classList.add('show');setTimeout(function(){$('#askText').focus()},150)}
@@ -592,14 +630,14 @@ document.addEventListener('click',function(e){try{
   if(act==='gen'){var p=$('#genPrompt').value.trim();if(!p){banner('Tavsif yozing');return}gen(p);return}
   if(act==='login'){showLogin();$('#loginModal').classList.add('show');return}
   if(act==='guest'){DB.profile={name:'Mehmon',username:'',avatar:''};sv();refreshFoot();renderChat();renderSet();$('#loginModal').classList.remove('show');newChat();return}
-  if(act==='tg-direct'){window.open('https://t.me/'+BOT_USER,'_blank');return}
+  if(act==='tg-direct'){window.open('https://t.me/'+CONFIG.botUsername,'_blank');return}
   if(act==='save-keys'){DB.settings.gem=$('#kGem').value.trim();DB.settings.groq=$('#kGroq').value.trim();DB.settings.or=$('#kOr').value.trim();DB.settings.cb=$('#kCb').value.trim();DB.settings.cfAcc=$('#kCfAcc').value.trim();DB.settings.cfTok=$('#kCfTok').value.trim();DB.settings.hf=$('#kHf').value.trim();sv();renderSet();banner('✅ Kalitlar saqlandi');return}
   if(act==='reset-chat'){if(confirm('Barcha suhbatlar o\'chirilsinmi?')){DB.chats=[];DB.active='';sv();newChat();renderSide();banner('Tozalandi')}return}
   if(act==='soon'){banner('Tez orada!');return}
  }
  var ms=t.closest('[data-m]');if(ms){var mm=ms.dataset.m;var s=DB.settings;
   var need={gemini:'gem',groq:'groq',openrouter:'or',cerebras:'cb',cloudflare:'cfAcc',huggingface:'hf'};
-  if(need[mm]&&!s[need[mm]]){banner('Bu AI uchun kalit kerak - Sozlamalardan qo\'shing');goPage('set');return}
+  if(need[mm]&&!s[need[mm]]){banner('Bu AI uchun kalit kerak - Sozlamalardan yoki kod boshidagi CONFIG dan qo\'shing');goPage('set');return}
   if(mm==='cloudflare'&&!s.cfTok){banner('Cloudflare token ham kerak');goPage('set');return}
   s.model=mm;sv();$$('#modelDD button').forEach(function(b){b.classList.toggle('sel',b.dataset.m===mm)});renderChat();return}
  var cm=t.closest('[data-c]');if(cm){var cc=ac();if(!cc)return;var ca=cm.dataset.c;
@@ -624,7 +662,7 @@ async function daily(){if(!DB.settings.daily)return;var td=new Date().toDateStri
 try{var mf={name:"Do'ppi AI",short_name:"Do'ppi",start_url:".",display:"standalone",background_color:"#ece0f8",theme_color:"#8f6fe8",lang:"uz",icons:[{src:"logo.png",sizes:"192x192",type:"image/png"},{src:"logo.png",sizes:"512x512",type:"image/png"}]};var mb=new Blob([JSON.stringify(mf)],{type:'application/manifest+json'});var ml=document.createElement('link');ml.rel='manifest';ml.href=URL.createObjectURL(mb);document.head.appendChild(ml)}catch(e){}
 
 window.addEventListener('load',function(){try{
- allLogos();
+ loadLogos();
  if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=function(){};
  DB.active='';newChat();autoR();renderChat();renderSide();renderSet();
  if(!DB.profile||!DB.settings.logged){setTimeout(function(){showLogin();$('#loginModal').classList.add('show')},1600)}
